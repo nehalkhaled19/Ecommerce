@@ -1,0 +1,106 @@
+import axios from "axios";
+import { createContext, useEffect, useState } from "react";
+
+
+export let CartContext = createContext()
+
+export default function CartContextProvider(props) {
+    let [cartCount, setCartCount] = useState(0)
+    let head = {
+        token: localStorage.getItem('userToken')
+    }
+  useEffect(()=>{
+    if (cartCount != 0 ) {
+        async function getAllData() {
+            let { data } = await getData()
+            setCartCount(data.numOfCartItems)
+        }
+        getAllData()
+    }
+  },[])
+  
+    
+    // delete from cart
+    function deleteData(id) {
+        return axios.delete(`https://ecommerce.routemisr.com/api/v1/cart/${id}`, {
+            headers: head
+        }
+        )
+    }
+    //clear cart
+    function clearCart() {
+        return axios.delete(`https://ecommerce.routemisr.com/api/v1/cart`, {
+            headers: head
+        }
+        )
+    }
+    // get cart data
+    function getData() {
+        return axios.get('https://ecommerce.routemisr.com/api/v1/cart', {
+            headers: head
+        }
+        )
+    }
+    // get wishlist data
+    function getWishListData() {
+        return axios.get('https://ecommerce.routemisr.com/api/v1/wishlist', {
+            headers: head
+        }
+        )
+    }
+    // delete from wishList
+    function deletePro(id) {
+        return axios.delete(`https://ecommerce.routemisr.com/api/v1/wishlist/${id}`, {
+            headers: head
+        }
+        )
+    }
+    // add to cart
+    function addToCart(id) {
+        let body = {
+            "productId": id
+        }
+        return axios.post('https://ecommerce.routemisr.com/api/v1/cart', body, {
+            headers: head
+        }
+        )
+    }
+    // add to WishList
+    function addToWishList(id) {
+        let body = {
+            "productId": id
+        }
+        return axios.post('https://ecommerce.routemisr.com/api/v1/wishlist', body, {
+            headers: head
+        }
+        )
+    }
+    // change quantity
+    function updataProduct(id, count) {
+        let body = {
+            "count": count
+        }
+        return axios.put(`https://ecommerce.routemisr.com/api/v1/cart/${id}`, body, {
+            headers: head
+        }
+        )
+
+    }
+
+
+    //  checkout   
+    function CheckOut(id, data) {
+        let body = {
+            shippingAddress: data
+        }
+        return axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=http://localhost:3000`, body, {
+            headers: head
+        }
+        )
+
+    }
+
+    return <CartContext.Provider value={{ cartCount,clearCart, deletePro, getWishListData, addToWishList, setCartCount, addToCart, getData, deleteData, updataProduct, CheckOut }}>
+        {props.children}
+    </CartContext.Provider>
+}
