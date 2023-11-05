@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div>
       <MainSlider></MainSlider>
-      <CategorySlider></CategorySlider>
+  
       <FeaturedProduct />
     </div>
   )

@@ -50,7 +50,7 @@ export default function Register() {
       setErrorMessage(err.response.data.message)
       setLoading(false)
     })
-    nav('/login')
+    nav('login')
     setLoading(false)
 
   }

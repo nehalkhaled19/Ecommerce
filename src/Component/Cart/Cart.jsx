@@ -122,7 +122,7 @@ export default function Cart() {
         </h6>
         <div className='row'>
           <div className="col-md-6 justify-space-between">
-            <Link to={'/CheckOut/' + list?._id}> <button className='btn text-white bg-main mt-2 w-100 py-1'>CheckOut</button></Link>
+            <Link to={'../checkOut/' + list?._id}> <button className='btn text-white bg-main mt-2 w-100 py-1'>CheckOut</button></Link>
 
           </div>
           <div className="col-md-6">

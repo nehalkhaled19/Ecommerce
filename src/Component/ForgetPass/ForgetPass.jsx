@@ -31,12 +31,14 @@ export default function ForgetPass() {
 
     // send data
     async function sendData(val) {
+        console.log('loly');
+
         let { data } = await axios.post(`${url}/api/v1/auth/forgotPasswords`, val).catch((err) => {
             setErrorMessage(err.response.data.message)
+            console.log(err.response.data.message);
         })
         document.getElementById("forCode").classList.remove('d-none')
         document.getElementById("forEmail").classList.add('d-none')
-
     }
     // ------------------------------------------------Code
     //  validation
@@ -58,13 +60,13 @@ export default function ForgetPass() {
         let { data } = await axios.post(`${url}/api/v1/auth/verifyResetCode`, val).catch((err) => {
             codeMessage(err.response.data.message)
         })
-        nav('/ResetPass')
+        nav('../resetPass')
     }
 
 
 
     return <div>
-        <form key={'forgetPassForm'} id='forEmail' onSubmit={sendCode.handleSubmit}>
+        <form id='forEmail' onSubmit={sendCode.handleSubmit}>
 
             <div className='my-5'>
                 {emailError != "" ? <div className='alert alert-danger'>{emailError}</div> : ""}
@@ -72,7 +74,7 @@ export default function ForgetPass() {
                 <input onChange={sendCode.handleChange} type="email" className='form-control mt-2' name="email" id="email" />
                 <p className='mt-1 text-danger'>{sendCode.errors.email}</p>
             </div>
-            <button disabled={!(sendCode.isValid && sendCode.dirty)} type='submit' className='btn my-4  text-white bg-main d-block ms-auto'>Send</button>
+            <button disabled={!(sendCode.isValid && sendCode.dirty)} type='submit' className='btn my-4 text-white bg-main d-block ms-auto'>Send</button>
         </form>
         <div id='forCode' key={'codeForm'} className='d-none'>
             <form onSubmit={getCode.handleSubmit}>

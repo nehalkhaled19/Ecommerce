@@ -18,9 +18,9 @@ export default function CategorySlider() {
     return <div key={'CategorySliderSection'}>
         <OwlCarousel className=' owl-carousel owl-reponsive-breakpoint owl-theme my-5 ' responsive={{ 0: { items: 1 } , 480: { items: 2 }, 767: { items: 4 } , 990: { items: 6 }}}  loop dots={true} >
             {list?.map((e) => {
-                return <div class='item'>
-                    <img className='small-img' src={e.image} alt="img1" />
-                    <h5 className='mt-2'>{e.name}</h5>
+                return <div class='item mx-2'>
+                    <img className='small-img rounded-circle' src={e.image} alt="img1" />
+                    <h5 className='mt-2 text-center'>{e.name}</h5>
                 </div>
             })}
         </OwlCarousel>

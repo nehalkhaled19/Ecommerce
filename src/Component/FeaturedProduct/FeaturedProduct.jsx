@@ -4,6 +4,8 @@ import $ from 'jquery'
 import { Link } from 'react-router-dom'
 import { CartContext } from '../../Context/CartContext'
 import toast, { Toaster } from 'react-hot-toast';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 
 export default function FeaturedProduct() {
@@ -42,6 +44,7 @@ export default function FeaturedProduct() {
         setProduct(data.data)
         setSomeProduct(data.data)
         $('.loading').fadeOut(500)
+            AOS.init()
     }
 
     // add to cart
@@ -109,7 +112,7 @@ export default function FeaturedProduct() {
 
                         {allProduct.map((e) => <div key={e._id} className="col-xl-2 col-lg-3 col-md-4 col-sm-6 ">
                             <div className="product p-2 cursor-pointer overflow-hidden ">
-                                <Link to={'/ProductDetails/' + e._id}>
+                                <Link to={'../productDetails/' + e._id}>
 
                                     <img src={e.imageCover} className='w-100 mb-2' alt={e.title} />
                                     <span className='text-main font-sm fw-ligther'>{e.category.slug}</span>

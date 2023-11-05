@@ -45,7 +45,7 @@ export default function Login({ saveData }) {
     })
     localStorage.setItem("userToken", data.token)
     saveData(data.user)
-    nav('/home')
+    nav('../home')
     setLoading(false)
 
   }
@@ -68,10 +68,10 @@ export default function Login({ saveData }) {
           {forms.touched.password ? <p class="mt-2 text-danger">{forms.errors.password}</p> : ""}
         </div>
 
-        <Link to={"/ForgetPass"} className='forget'>Forget Password?</Link >
+        <Link to={"../forgetPass"} className='forget'>Forget Password?</Link >
         {loading ? <button type='button' className='btn  text-white bg-main ms-auto d-block'>
           < i className='fa-solid fa-spinner fa-spin' />
-        </button> : <button disabled={!(forms.isValid && forms.dirty)} type='submit' className='btn my-4  text-white bg-main d-block ms-auto'>Login</button>}
+        </button> : <button disabled={!(forms.isValid && forms.dirty)} type='submit' className='btn my-4 text-white bg-main d-block ms-auto'>Login</button>}
 
       </form>
 

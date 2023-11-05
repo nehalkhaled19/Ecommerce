@@ -50,7 +50,7 @@ function App() {
   // to open home
   function SaveUser(x) {
     if (localStorage.getItem("userToken")) {
-      return <Navigate to='/Home' />
+      return <Navigate to='../home' />
     }
     else {
       return x.children
@@ -63,7 +63,7 @@ function App() {
       return x.children
     }
     else {
-      return <Navigate to='/login' />
+      return <Navigate to='../login' />
     }
   }
 
@@ -73,23 +73,23 @@ function App() {
     saveData(null)
     localStorage.removeItem('ClassName')
     localStorage.removeItem("haveCart")
-    return <Navigate to='/login' />
+    return <Navigate to='../login' />
   }
 
   // rooting
   let routes = createBrowserRouter([
     {
-      path: '', element: <Layout logout={logout} userData={userData} />, children: [
+      path: 'Ecommerce', element: <Layout logout={logout} userData={userData} />, children: [
         { path: 'home', element: <ProtectedRouter>< Home userData={userData} /></ProtectedRouter> },
         { path: 'cart', element: <ProtectedRouter><Cart /></ProtectedRouter> },
-        { path: 'Brands', element: <ProtectedRouter><Brand /></ProtectedRouter> },
+        { path: 'brands', element: <ProtectedRouter><Brand /></ProtectedRouter> },
         { path: 'product', element: <ProtectedRouter><Product /></ProtectedRouter> },
-        { path: 'WishList', element: <ProtectedRouter><WishList/></ProtectedRouter> },
-        { path: 'CheckOut/:id', element: <ProtectedRouter><CheckOut /></ProtectedRouter> },
-        { path: 'ProductDetails/:id', element: <ProtectedRouter><ProductDetails /></ProtectedRouter> },
-        { path: 'Category', element: <ProtectedRouter><Category /></ProtectedRouter> },
-        { path: 'ForgetPass', element: <ForgetPass /> },
-        { path: 'ResetPass', element: <ResetPass /> },
+        { path: 'wishlist', element: <ProtectedRouter><WishList/></ProtectedRouter> },
+        { path: 'checkOut/:id', element: <ProtectedRouter><CheckOut /></ProtectedRouter> },
+        { path: 'productDetails/:id', element: <ProtectedRouter><ProductDetails /></ProtectedRouter> },
+        { path: 'category', element: <ProtectedRouter><Category /></ProtectedRouter> },
+        { path: 'forgetPass', element: <ForgetPass /> },
+        { path: 'resetPass', element: <ResetPass /> },
         { path: '*', element: <Notfound /> },
         { index: true, element: <SaveUser><Register/></SaveUser> },
         { path: 'login', element: <Login saveData={saveData} /> },

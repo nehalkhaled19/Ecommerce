@@ -1,35 +1,77 @@
-import React from 'react'
-import img1 from '../../images/images/slider-image-1.jpeg'
-import img2 from '../../images/images/slider-image-2.jpeg'
-import img3 from '../../images/images/slider-image-3.jpeg'
+import React, { useEffect } from 'react'
+import img1 from '../../imgs/sample-1 (1).jpg'
+import img2 from '../../imgs/sample-2 (1).jpg'
+import img3 from '../../imgs/sub-banner-1 (1).jpg'
+import img4 from '../../imgs/sub-banner-2 (1).jpg'
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
+import CategorySlider from '../CategorySlider/CategorySlider'
+import { Link } from 'react-router-dom'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import $ from 'jquery'
+
+
 
 export default function MainSlider() {
+   
+
     return (
-        <div>
-            <div key={'mainSliderSection'} className="row g-0">
-                <div className="col-md-9">
-                    <OwlCarousel className='owl-theme' items={1} autoplay autoplayTimeout={1000} loop dots={false} >
-                    <div class='item'>
-                        <img className='w-100 main-img' src={img1} alt="img1" />
+        <div >
+            <div key={'mainSliderSection'} className="row gx-0 ">
+                <div className="col-md-9  my-2 pe-md-4">
+
+                    <div className=' rounded-3 position-relative overflow-hidden' id='imgSlider'>
+                        <img className='rounded-3 w-100 ' src={img1} style={{ transition: ' all 0.6s ease 0s' }} alt="slider-1" />
+                        <div className='slider-layer'>
+                            <p data-aos="fade-left" data-aos-duration='500' data-aos-delay="600">
+                                Big Saving Days Sale</p>
+                            <h3 data-aos="fade-left" data-aos-duration='500' data-aos-delay="900">Women Solid Round
+                                Green T-Shirt
+                            </h3>
+                            <p data-aos="fade-left" data-aos-duration='500' data-aos-delay="1200">Starting At Only <span> $59.00</span></p>
+                            <Link to={'../home'}>
+                                <button className='btn bg-main'> SHOP NOW</button>
+                            </Link>
                         </div>
-                        <div class='item'>
-                        <img className='w-100 main-img' src={img2} alt="img2" />
-                        </div>
-                        <div class='item'>
-                        <img className='w-100 main-img' src={img3} alt="img3" />
-                        </div>
-                        
-                    </OwlCarousel>
+                    </div>
+
+
 
                 </div>
-                <div className="col-md-3">
-                    <img className='w-100 small-img' src={img2} alt="img2" />
-                    <img className='w-100 small-img' src={img3} alt="img3" />
+        
+                <div className="col-md-3 my-2 slider ">
+                    <div id='imgSlider' className=' pb-0' >
+                    <div className='position-relative overflow-hidden'  >
+                        <img className='w-100 rounded-2  ' style={{ transition: ' all 0.6s ease 0s' }} src={img3} alt="camira" />
+                        <div className='slider-layer slider2-layer'>
+                            <h6 className='layer-h3'>Samsung Gear
+                                VR Camera
+                            </h6>
+                            <span className='layer-span' > $129.00</span>
+
+                        </div>
+                    </div>
+
+                    </div>
+                    <div id='imgSlider' className=' d-flex align-items-end '>
+                    <div  className='position-relative overflow-hidden mt-2 w-100'>
+                        <img  className='w-100 rounded-2 ' style={{ transition: ' all 0.6s ease 0s' }} src={img4} alt="chair" />
+                        <div className='slider-layer'>
+
+                            <h6 className='layer-h3'> Dining
+                                Room Chair
+                            </h6>
+                            <span className='layer-span' > $129.00</span>
+
+                        </div>
+                    </div>
+
+                    </div>
                 </div>
             </div>
+            <CategorySlider></CategorySlider>
         </div>
     )
 }
