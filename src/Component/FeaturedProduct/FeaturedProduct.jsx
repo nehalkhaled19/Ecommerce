@@ -20,10 +20,6 @@ export default function FeaturedProduct() {
     // to show products
     useEffect(() => {
         getProductes()
-        $('.pages').on('click', (e) => {
-            let page = $(e.target).html()
-            getProductes(page)
-        })
         getWishData()
     }, [])
 
@@ -43,10 +39,19 @@ export default function FeaturedProduct() {
         let { data } = await axios.get(`${url}/api/v1/products?page=${page}`)
         setProduct(data.data)
         setSomeProduct(data.data)
-        $('.loading').fadeOut(500)
+        $('.loading').fadeOut(500, () => {
             AOS.init()
+        })
     }
-
+// to mention the page
+function page(){
+    $('.pages').on('click', (e) => {
+        let page = e.target.getAttribute('num')
+        getProductes(page)
+        let topSection = $('#ProductSection').offset().top
+       $(window).scrollTop(topSection);
+    })
+}
     // add to cart
     async function add(id) {
         let { data } = await addToCart(id)
@@ -55,6 +60,7 @@ export default function FeaturedProduct() {
             setCartCount(data.numOfCartItems)
             toast.success(data.message)
         }
+   
     }
 
     //WishList
@@ -108,7 +114,7 @@ export default function FeaturedProduct() {
             <input type="text" onKeyUp={searching} id='productName' placeholder='search....' className='form-control w-75 m-auto my-5' />
             <div>
                 <div>
-                    <div key={'ProductSection'} className="row my-3 gy-3">
+                    <div id='ProductSection' className="row my-3 gy-3">
 
                         {allProduct.map((e) => <div key={e._id} className="col-xl-2 col-lg-3 col-md-4 col-sm-6 ">
                             <div className="product p-2 cursor-pointer overflow-hidden ">
@@ -143,15 +149,15 @@ export default function FeaturedProduct() {
 
             <nav aria-label="Page navigation example">
                 <ul className="pagination justify-content-center">
-                    <li className="page-item">
-                        <a className="page-link text-main" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
+                    <li className="page-item" >
+                        <a className="page-link text-main pages" href="#"  aria-label="Previous">
+                            <span aria-hidden="true" className="pages" >&laquo;</span>
                         </a>
                     </li>
-                    <li className="page-item"><a className="page-link text-main pages cursor-pointer" >1</a></li>
-                    <li className="page-item"><a className="page-link text-main pages cursor-pointer" >2</a></li>
+                    <li className="page-item"><a num={'1'} className="page-link text-main pages cursor-pointer" onClick={page()} >1</a></li>
+                    <li className="page-item"><a num={'2'}  className="page-link text-main pages cursor-pointer" onClick={page()} >2</a></li>
                     <li className="page-item">
-                        <a className="page-link text-main" href="#" aria-label="Next">
+                        <a  className="page-link text-main pages" href="#"  aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>

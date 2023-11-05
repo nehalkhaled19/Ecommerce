@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import * as Yup from 'yup'
 import axios from 'axios'
 import { Link, useNavigate } from "react-router-dom"
+import img1 from "../../imgs/5062532-fotor-2023110523261.jpg"
+
 
 export default function ForgetPass() {
 
@@ -66,28 +68,42 @@ export default function ForgetPass() {
 
 
     return <div>
-        <form id='forEmail' onSubmit={sendCode.handleSubmit}>
+        <div  id='registerForm' className='d-flex shadow-lg px-4 rounded-5'>
+    <div className='col-md-7 d-flex align-items-center'>
+      <img src={img1} className='w-100' alt="logo2" />
+      </div>
+     <div className='col-md-5 d-flex align-items-center '>
+      <div id='forEmail' className='w-100'>
+      <h2 className='text-dark my-4 '>Forget your passowrd:</h2>
 
-            <div className='my-5'>
+        <form onSubmit={sendCode.handleSubmit}>
+
+            <div className='my-3'>
                 {emailError != "" ? <div className='alert alert-danger'>{emailError}</div> : ""}
-                <label htmlFor="email">Enter your email:</label>
-                <input onChange={sendCode.handleChange} type="email" className='form-control mt-2' name="email" id="email" />
+               
+                <input placeholder='Enter your email' onChange={sendCode.handleChange} type="email" className='form-control mt-2' name="email" id="email" />
                 <p className='mt-1 text-danger'>{sendCode.errors.email}</p>
             </div>
-            <button disabled={!(sendCode.isValid && sendCode.dirty)} type='submit' className='btn my-4 text-white bg-main d-block ms-auto'>Send</button>
+            <button disabled={!(sendCode.isValid && sendCode.dirty)} type='submit' className='btn my-4 rounded-4 m-auto text-white px-5 bg-main d-block' style={{fontSize:'16px'}}>Send</button>
         </form>
-        <div id='forCode' key={'codeForm'} className='d-none'>
+        <div>
+        </div>
+        </div>
+        <div  id='forCode' key={'codeForm'} className='d-none w-100'>
+      <h2 className='text-dark my-4 position-relative'>Enter code:</h2>
             <form onSubmit={getCode.handleSubmit}>
-                <div className='my-5'>
+                <div className='my-2'>
                 {codeError != "" ? <div className='alert alert-danger'>{codeError}</div> : ""}
 
-                    <label htmlFor="resetCode">Enter Code:</label>
-                    <input onChange={getCode.handleChange} type="resetCode" className='form-control mt-2' name="resetCode" id="resetCode" />
+                    <input placeholder='code' onChange={getCode.handleChange} type="resetCode" className='form-control mt-2' name="resetCode" id="resetCode" />
                     <p className='mt-1 text-danger'>{getCode.errors.resetCode}</p>
                 </div>
-                <button disabled={!(getCode.isValid && getCode.dirty)} type='submit' className='btn my-4  text-white bg-main d-block ms-auto'>Change Password</button>
+                <button disabled={!(getCode.isValid && getCode.dirty)} type='submit' className='btn my-4 rounded-4 m-auto text-white px-3 bg-main d-block' style={{fontSize:'16px'}}>Change Password</button>
             </form>
         </div>
     </div>
+    </div>
+    </div>
+
 
 }

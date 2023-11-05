@@ -17,22 +17,20 @@ export default function Cart() {
 
 
   useEffect(() => {
-    // console.log(cartCount);
     if (cartCount != 0) {
-    $('.loading').fadeIn(1500)
-
+      $('.loading').fadeIn(1500)
       cartData()
     }
     check()
   }, [])
   function check() {
     if (localStorage.getItem('haveCart') == 'no' || cartCount == 0) {
-    // $('.loading').fadeIn(1500)
+      // $('.loading').fadeIn(1500)
       $('#existcart').addClass('d-none')
       $('#emptycart').removeClass('d-none')
-     
-    $('.loading').fadeOut(500)
-  }
+
+      $('.loading').fadeOut(500)
+    }
 
   }
   check()
@@ -57,7 +55,6 @@ export default function Cart() {
     setCartCount(data.numOfCartItems)
     setCount(data.numOfCartItems)
     $('.loading').fadeOut(500)
-
   }
   // clear cart
   async function DeleteCart() {
@@ -73,11 +70,17 @@ export default function Cart() {
   }
 
   // change quantity
-  async function updateQuantity(id, count) {
+  async function toAdd(id, count) {
     let { data } = await updataProduct(id, count)
     setList(data.data)
   }
-
+  async function toRemove(id, count) {
+    if (document.getElementById("productNum").innerHTML == 1) {
+      DeleteProduct(id)
+    }
+    // let { data } = await updataProduct(id, count)
+    // setList(data.data)
+  }
 
 
   return <>
@@ -104,9 +107,11 @@ export default function Cart() {
           </div>
 
           <div className="col-md-6 ms-auto text-end">
-            <span onClick={() => updateQuantity(e.product._id, e.count + 1)} className='btn mx-3  text-white bg-main'> + </span>
-            <span>{e.count}</span>
-            <span onClick={() => updateQuantity(e.product._id, e.count - 1)} className='btn mx-3  text-white bg-danger'>-</span>
+            <span onClick={() => toAdd(e.product._id, e.count + 1)} className='btn mx-3  text-white bg-main'> + </span>
+            <span id='productNum'>{e.count}</span>
+            <span onClick={() => toRemove(e.product._id, e.count - 1)} className='btn mx-3  text-white bg-danger'>-</span>
+
+
           </div>
 
         </div>

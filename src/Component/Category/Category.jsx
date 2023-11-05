@@ -24,6 +24,8 @@ export default function Category() {
     let { data } = await axios.get(`https://ecommerce.routemisr.com/api/v1/categories/${id}/subcategories`)
     document.getElementById('sub').innerHTML = categoryName + ' subcategories'
     $('#subcategoty').removeClass('d-none')
+    let topSection = $('#subcategoty').offset().top
+    $(window).scrollTop(topSection);
     setSubCategiry(data.data)
     $('.loading').fadeOut(500)
 

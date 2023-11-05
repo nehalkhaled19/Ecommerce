@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Nav from '../Nav/Nav'
-import { Outlet } from 'react-router-dom'
-
+import { Outlet, useLocation } from 'react-router-dom'
+import $ from 'jquery'
 
 
 export default function Layout({ userData, logout }) {

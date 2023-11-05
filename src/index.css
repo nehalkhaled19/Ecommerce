@@ -20,7 +20,13 @@ body {
 .cursor-pointer {
     cursor: pointer;
 }
+.img-category img{
+    transition: all 0.3s;
+}
+.img-category:hover img{
+    transform: rotateY(360deg) scale(0.8,0.8)
 
+}
 a,
 a:hover {
     color: black;
@@ -45,6 +51,11 @@ a:hover {
 .card p {
     font-size: 28px;
     font-weight: 500;
+}
+#registerForm{
+    margin: auto;
+    padding: 10px 0;
+    overflow: hidden;
 }
 
 .product:hover {
@@ -213,7 +224,7 @@ a:hover {
     font-weight: 500;
 }
 
-#imgSlider:hover img {
+.imgSlider:hover img {
     transform: scale(1.1);
 }
 
@@ -278,18 +289,64 @@ a:hover {
         width: 100%;
     }
 
+    .slider-layer h3 {
+        font-size: 18px;
+    }
+
     .product .btn {
         opacity: 1;
         transform: translateY(0%);
     }
 
- .slider{
-    display: flex;
-    justify-content: center;
-    align-items: center;
- }
- 
+    .slider {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+
+    }
+    #registerForm{
+  flex-direction: column;
+    }
+
 }
 
 /* mobile */
-@media (max-width: 480px) {}
+@media (max-width: 480px) {
+    .slider-layer {
+        width: 40%;
+        /* padding: 0 15px; */
+    }
+
+    .slider-layer h3 {
+        font-size: 12px;
+        margin: 5px 0;
+    }
+
+    .slider-layer span {
+        font-size: 10px;
+        margin: 0;
+    }
+
+    .slider-layer p {
+        font-size: 10px;
+        margin: 5px 0;
+    }
+
+    .layer-h3 {
+        font-size: 24px;
+    }
+
+    .layer-span {
+        font-size: 24px !important;
+    }
+
+    .slider {
+        flex-direction: column;
+    }
+
+    .btn-shop {
+        padding: 5px !important;
+        font-size: 10px !important;
+    }
+}

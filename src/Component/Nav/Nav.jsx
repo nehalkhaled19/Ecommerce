@@ -40,8 +40,8 @@ export default function Nav({ userData, logout }) {
                 </>
 
                 : <>
-                  <Link className='nav-link ' to={"cart"}>
-                    <div className='position-relative mx-3'>
+                 <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'cart'}>
+                 <div className='position-relative mx-3'>
                       <i class="fa-solid fa-cart-shopping text-main fa-lg"></i>
 
                       <span class="bg-main number  badge rounded-pill bg-danger">
@@ -49,7 +49,8 @@ export default function Nav({ userData, logout }) {
                       </span>
 
                     </div>
-                  </Link>
+                 </NavLink>
+             
                   <span onClick={logout} className='nav-link cursor-pointer'>SignOut</span>  </>}
             </ul>
 

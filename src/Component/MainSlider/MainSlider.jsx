@@ -20,19 +20,19 @@ export default function MainSlider() {
     return (
         <div >
             <div key={'mainSliderSection'} className="row gx-0 ">
-                <div className="col-md-9  my-2 pe-md-4">
+                <div className="col-md-9  my-2 pe-md-4 ">
 
-                    <div className=' rounded-3 position-relative overflow-hidden' id='imgSlider'>
+                    <div className=' rounded-3 position-relative overflow-hidden imgSlider' >
                         <img className='rounded-3 w-100 ' src={img1} style={{ transition: ' all 0.6s ease 0s' }} alt="slider-1" />
                         <div className='slider-layer'>
-                            <p data-aos="fade-left" data-aos-duration='500' data-aos-delay="600">
+                            <p data-aos="fade-left" data-aos-duration='500' data-aos-delay="0">
                                 Big Saving Days Sale</p>
-                            <h3 data-aos="fade-left" data-aos-duration='500' data-aos-delay="900">Women Solid Round
+                            <h3 data-aos="fade-left" data-aos-duration='500' data-aos-delay="400">Women Solid Round
                                 Green T-Shirt
                             </h3>
-                            <p data-aos="fade-left" data-aos-duration='500' data-aos-delay="1200">Starting At Only <span> $59.00</span></p>
+                            <p data-aos="fade-left" data-aos-duration='500' data-aos-delay="800">Starting At Only <span> $59.00</span></p>
                             <Link to={'../home'}>
-                                <button className='btn bg-main'> SHOP NOW</button>
+                                <button className='btn btn-shop bg-main'> SHOP NOW</button>
                             </Link>
                         </div>
                     </div>
@@ -41,8 +41,8 @@ export default function MainSlider() {
 
                 </div>
         
-                <div className="col-md-3 my-2 slider ">
-                    <div id='imgSlider' className=' pb-0' >
+                <div className="col-md-3 my-2 slider d-flex flex-md-column">
+                    <div  className='imgSlider object-fit-cover pb-0 ' >
                     <div className='position-relative overflow-hidden'  >
                         <img className='w-100 rounded-2  ' style={{ transition: ' all 0.6s ease 0s' }} src={img3} alt="camira" />
                         <div className='slider-layer slider2-layer'>
@@ -55,8 +55,8 @@ export default function MainSlider() {
                     </div>
 
                     </div>
-                    <div id='imgSlider' className=' d-flex align-items-end '>
-                    <div  className='position-relative overflow-hidden mt-2 w-100'>
+                    <div  className='imgSlider object-fit-cover align-self-end m-auto mb-0'>
+                    <div  className='position-relative overflow-hidden mt-md-2 w-100'>
                         <img  className='w-100 rounded-2 ' style={{ transition: ' all 0.6s ease 0s' }} src={img4} alt="chair" />
                         <div className='slider-layer'>
 
