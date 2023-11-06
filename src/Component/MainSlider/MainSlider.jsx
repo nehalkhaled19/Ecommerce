@@ -32,7 +32,7 @@ export default function MainSlider() {
                             </h3>
                             <p data-aos="fade-left" data-aos-duration='500' data-aos-delay="800">Starting At Only <span> $59.00</span></p>
                             <Link to={'../home'}>
-                                <button className='btn btn-shop bg-main'> SHOP NOW</button>
+                                <button className='btn btn-shop bg-main main-btn'> SHOP NOW</button>
                             </Link>
                         </div>
                     </div>
