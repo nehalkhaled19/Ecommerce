@@ -5,7 +5,7 @@ import { createContext, useEffect, useState } from "react";
 export let CartContext = createContext()
 
 export default function CartContextProvider(props) {
-    let [cartCount, setCartCount] = useState(0)
+    let [cartCount, setCartCount] = useState("")
     let head = {
         token: localStorage.getItem('userToken')
     }

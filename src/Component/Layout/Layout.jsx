@@ -6,9 +6,9 @@ import Footer from '../Footer/Footer'
 
 export default function Layout({ userData, logout }) {
   return <>
-    <div className='py-5'>
+    <div className='pt-5'>
       <Nav logout={logout} userData={userData}></Nav>
-      <div className='container mt-5'>
+      <div>
         <Outlet />
       </div>
     </div>

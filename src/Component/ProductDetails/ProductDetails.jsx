@@ -8,6 +8,7 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { CartContext } from '../../Context/CartContext'
 import toast, { Toaster } from 'react-hot-toast';
 import { useContext } from 'react';
+import Footer from '../Footer/Footer';
 
 
 
@@ -81,11 +82,12 @@ export default function ProductDetails() {
         <div className='loading position-fixed top-0 end-0 start-0 bottom-0 '>
             <i className='fa-solid fa-spinner fa-spin fa-5x text-main'></i>
         </div>
-        {product != null ? <div key={'productDetailsSection'} className="row align-items-center my-5 ">
+        <div className="container">
+        {product != null ? <div className="row align-items-center my-5  mt-5">
             <div className="col-md-3 my-3">
                 <OwlCarousel className='owl-theme' items={1} loop  >
                     {product.images.map((e) => {
-                        return <div class='item'>
+                        return <div key={'productDetailsSection'}  class='item'>
                             <img src={e} className='w-100' alt={product.category.name} />
                         </div>
                     })}
@@ -115,6 +117,7 @@ export default function ProductDetails() {
                 </div>
             </div>
         </div> : ""}
+        </div>
     </>
 
 

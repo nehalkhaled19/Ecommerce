@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { categoryData } from '../../Redux/CategorySlice';
 import axios from 'axios';
 import $ from 'jquery'
+import Footer from '../Footer/Footer';
 
 
 export default function Category() {
@@ -36,10 +37,10 @@ export default function Category() {
       <i className='fa-solid fa-spinner fa-spin fa-5x text-main'></i>
     </div>
 
-    <div className="container">
+    <div className="container mt-5'">
       <div className="row gy-3">
         {list.map((el) => {
-          return <div key={'categorySection'} className="col-lg-4 col-md-6 cursor-pointer " onClick={() => subcategories(el._id, el.name)}>
+          return <div key={'categorySection1'} className="col-lg-4 col-md-6 cursor-pointer " onClick={() => subcategories(el._id, el.name)}>
             <div className='border border-1 rounded-2 card cardshadow'>
               <img className='w-100 small-img' src={el.image} alt="category" />
               <p className='text-center text-main m-3'>{el.name}</p>
@@ -53,7 +54,7 @@ export default function Category() {
       <h2 className='text-main text-center m-3' id='sub'></h2>
       <div className="row gy-3">
         {subCategiry?.map((el) => {
-          return <div className="col-md-4 cursor-pointer ">
+          return <div key={'categoryDetails1'} className="col-md-4 cursor-pointer ">
             <div className='border border-1 rounded-2 card'>
               <p className='text-center  m-3'>{el.name}</p>
             </div>
@@ -62,5 +63,6 @@ export default function Category() {
       </div>
 
     </div>
+    <Footer></Footer>
   </>
 }

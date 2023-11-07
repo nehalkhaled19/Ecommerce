@@ -56,6 +56,7 @@ a:hover {
     margin: auto;
     padding: 10px 0;
     overflow: hidden;
+    box-shadow: 1px 1px 10px #4fa74f !important;
 }
 
 .product:hover {
@@ -148,8 +149,7 @@ a:hover {
 
 
 .object {
-    object-fit: cover;
-    /* width: 80%; */
+    object-fit: cover;   
 }
 
 .owl-theme .owl-dots .owl-dot.active span,
@@ -237,6 +237,9 @@ a:hover {
     border-top: 1px #dddada solid;
     border-bottom: 1px #dddada solid;
 }
+.footer-row img{
+    width: 40%;
+}
 /*footer icons  */
 .icon-holder {
     width: 30px;
@@ -274,6 +277,9 @@ a:hover {
     border-color: #00aced;
     color: white;
   }
+  .footer-input{
+    width: 75%;
+}
 /* Media */
 /* Large desktop */
 @media (max-width: 1200px) {
@@ -323,6 +329,9 @@ a:hover {
     .layer-span {
         font-size: 16px
     }
+    .stores img{
+        width: 30%;
+    }
 }
 
 /* Landscape phone to portrait tablet */
@@ -349,6 +358,9 @@ a:hover {
     }
     #registerForm{
   flex-direction: column;
+    }
+    .footer-input{
+        width: 100% ;
     }
 
 }
@@ -390,5 +402,14 @@ a:hover {
     .btn-shop {
         padding: 5px !important;
         font-size: 10px !important;
+    }
+    .footer-row img{
+        width: 55%;
+    }
+    .stores img{
+        width: 40%;
+    }
+.footer-input{
+        width: 100% ;
     }
 }

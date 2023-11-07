@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import $ from 'jquery'
 import { Link } from 'react-router-dom'
+import cart from '../../imgs/cart1.png'
 
 
 
@@ -87,7 +88,7 @@ export default function Cart() {
     <div className='loading position-fixed top-0 end-0 start-0 bottom-0 '>
       <i className='fa-solid fa-spinner fa-spin fa-5x text-main'></i>
     </div>
-    <div id='existcart' className='mt-5  py-2'>
+    <div id='existcart' className='py-2 container mt-5'>
       <h1 className=' my-3'>My Cart</h1>
       {list?.products.map((e) => {
         return <div key={e._id} className="row m-0 bg-light py-2 border-bottom align-items-center ">
@@ -139,8 +140,11 @@ export default function Cart() {
 
       </div>
     </div>
-    <div id='emptycart' className='mt-5  p-2 d-none'>
-      <h1 className=' my-3'>Your Cart is empty</h1>
+    <div id='emptycart' className='mt-5 container text-center d-none'>
+      <img src={cart} className='m-auto  object' alt="empty cart" />
+      <p className='my-3 text-main' style={{fontSize:'30px'}}>Your Cart is empty</p>
+
+
     </div>
   </>
 }

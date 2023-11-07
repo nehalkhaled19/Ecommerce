@@ -5,10 +5,11 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import $ from 'jquery'
 import toast, { Toaster } from 'react-hot-toast';
+import img from '../../imgs/cart1.png'
 
 
 export default function WishList() {
-    let { getWishListData, addToCart, setCartCount, deletePro,cartCount } = useContext(CartContext)
+    let { getWishListData, addToCart, setCartCount, deletePro, cartCount } = useContext(CartContext)
     let [list, setList] = useState(null)
 
     // get data
@@ -22,15 +23,15 @@ export default function WishList() {
         $('.loading').fadeOut(500)
 
     }
-   // add to cart
-   async function add(id) {
-    let { data } = await addToCart(id)
-    localStorage.setItem('haveCart', 'yes')
-    if (data.status == 'success') {
-        setCartCount(data.numOfCartItems)
-        toast.success(data.message)
+    // add to cart
+    async function add(id) {
+        let { data } = await addToCart(id)
+        localStorage.setItem('haveCart', 'yes')
+        if (data.status == 'success') {
+            setCartCount(data.numOfCartItems)
+            toast.success(data.message)
+        }
     }
-}
     // delete 
     async function remove(id) {
         $('.loading').fadeIn(1000)
@@ -49,41 +50,46 @@ export default function WishList() {
         <div className='loading position-fixed top-0 end-0 start-0 bottom-0 '>
             <i className='fa-solid fa-spinner fa-spin fa-5x text-main'></i>
         </div>
+        <div className='container mt-5'>
+            <div id='full' className='mt-5 py-1 px-3'>
+                <h1 className='my-3'>My Wish List</h1>
 
-        <div id='full' key={'wishListSection'} className='mt-5 py-1 px-3'>
-            <h1 className='my-3'>My Wish List</h1>
+                {list?.map((e) => {
+                    return <div key={e._id} className="row bg-light py-2  border-bottom align-items-center ">
+                        <div className="col-md-6">
+                            <div className="row py-2 align-items-center">
+                                <div className="col-md-2  ">
+                                    <img src={e.imageCover} className='w-100 my-2' alt="product-image" />
+                                </div>
+                                <div className="col-md-9">
+                                    <h6>{e.title}</h6>
+                                    <p className='text-main'>{e.price} EGP</p>
 
-            {list?.map((e) => {
-                return <div key={e._id} className="row bg-light py-2  border-bottom align-items-center ">
-                    <div className="col-md-6">
-                        <div className="row py-2 align-items-center">
-                            <div className="col-md-2  ">
-                                <img src={e.imageCover} className='w-100 my-2' alt="product-image" />
+                                    <div className='cursor-pointer' onClick={() => remove(e._id)} > <i className='fa-solid fa-trash text-danger fa-sm me-2 '> </i><span>Remove</span></div>
+
+
+                                </div>
                             </div>
-                            <div className="col-md-9">
-                                <h6>{e.title}</h6>
-                                <p className='text-main'>{e.price} EGP</p>
+                        </div>
 
-                                <div className='cursor-pointer' onClick={() => remove(e._id)} > <i className='fa-solid fa-trash text-danger fa-sm me-2 '> </i><span>Remove</span></div>
+                        <div className="col-md-6 ms-auto text-end">
+                            <span className='btn btn-wish mx-lg-3 my-2 text-white bg-main' onClick={() => add(e._id)}> Add to cart</span>
 
 
-                            </div>
+
+
                         </div>
                     </div>
 
-                    <div className="col-md-6 ms-auto text-end">
-                        <span className='btn btn-wish mx-lg-3 my-2 text-white bg-main' onClick={() => add(e._id)}> Add to cart</span>
+
+                })}</div>
+            <div id='empty' className='mt-5 py-1 px-3 d-none text-center'>
+                <img src={img} className='object ' alt="empty wishlist" />
+                <p className='my-3 text-main' style={{ fontSize: '30px' }}>Your Wish List is empty</p>
 
 
-
-
-                    </div>
-                </div>
-
-
-            })}</div>
-        <div id='empty' className='mt-5 py-1 px-3 d-none'>
-            <h1 className='my-3'>Your Wish List is empty</h1>
+            </div>
         </div>
+
     </>
 }

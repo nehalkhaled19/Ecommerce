@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import $ from 'jquery'
+import Footer from '../Footer/Footer'
 
 export default function Brand() {
 
@@ -34,11 +35,11 @@ export default function Brand() {
         <div className='loading position-fixed top-0 end-0 start-0 bottom-0 '>
             <i className='fa-solid fa-spinner fa-spin fa-5x text-main'></i>
         </div>
-        <div className='container my-5' key={'brandSection'} >
+        <div className='container my-5'>
             <h1 className='text-main text-center my-4' id='sub'>All Brands</h1>
             <div className="row gy-3">
                 {brands?.map((el) => {
-                    return <div className="col-lg-3 col-md-4 cursor-pointer " onClick={() => brand(el._id)}  >
+                    return <div  key={'brandSection'} className="col-lg-3 col-md-4 cursor-pointer " onClick={() => brand(el._id)}  >
                         <div className='border border-1 rounded-2 cardshadow'>
                             <img src={el.image} className='w-100' alt="brand" />
                             <p className='text-center  m-3'>{el.name}</p>
@@ -48,7 +49,7 @@ export default function Brand() {
             </div>
 
         </div>
-        {brandDetails != null ? <div key={'model'} class="modal bg " id="exampleModal1" >
+        {brandDetails != null ? <div  key={'model'} class="modal bg " id="exampleModal1" >
             <div className="modal-dialog modal-dialog-centered">
                 <div className="modal-content">
                     <div className="modal-header">
@@ -73,7 +74,7 @@ export default function Brand() {
                 </div>
             </div>
         </div> : ""}
-
+<Footer></Footer>
     </>
 
 }

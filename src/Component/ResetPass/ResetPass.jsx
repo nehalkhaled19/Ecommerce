@@ -37,7 +37,7 @@ export default function ResetPass() {
   }
 
   return (
-    <div>
+    <div className='container mt-5'>
           <div  id='registerForm' className='d-flex shadow-lg px-4 rounded-5'>
     <div className='col-md-7 d-flex align-items-center'>
       <img src={img1} className='w-100' alt="logo2" />

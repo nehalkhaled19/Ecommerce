@@ -9,7 +9,7 @@ export default function Nav({ userData, logout }) {
 
   return (
     <div>
-      <nav key={'navbar'} className="navbar navbar-expand-lg bg-body-tertiary fixed-top py-3">
+      <nav  className="navbar navbar-expand-lg bg-body-tertiary fixed-top py-3">
         <div className="container">
 
           <Link className='nav-brand ' to={"home"}>
@@ -42,9 +42,9 @@ export default function Nav({ userData, logout }) {
                 : <>
                  <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'cart'}>
                  <div className='position-relative mx-3'>
-                      <i class="fa-solid fa-cart-shopping text-main fa-lg"></i>
+                      <i className="fa-solid fa-cart-shopping text-main fa-lg"></i>
 
-                      <span class="bg-main number  badge rounded-pill bg-danger">
+                      <span className="bg-main number  badge rounded-pill bg-danger">
                         {cartCount}
                       </span>
 

@@ -5,10 +5,11 @@ import Footer from '../Footer/Footer'
 export default function Product() {
 
 
-  return (
-    <div>
+  return <>
+    <div className='container mt-5'>
       <FeaturedProduct></FeaturedProduct>
-      <Footer></Footer>
+      
     </div>
-  )
+    <Footer></Footer>
+  </>
 }

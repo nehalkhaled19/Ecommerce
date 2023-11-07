@@ -3,6 +3,7 @@ import React, { useContext } from 'react'
 import * as Yup from 'yup'
 import { CartContext } from '../../Context/CartContext'
 import { useParams } from 'react-router-dom'
+import img1 from "../../imgs/5062532-fotor-2023110523261.jpg"
 
 export default function CheckOut() {
 
@@ -20,9 +21,9 @@ export default function CheckOut() {
 
     let forms = useFormik({
         initialValues: {
-            details: "details",
-            phone: "01010700999",
-            city: "Cairo"
+            details: "",
+            phone: "",
+            city: ""
         },
         onSubmit: data,
         validationSchema
@@ -35,26 +36,30 @@ export default function CheckOut() {
 
 
 
-
-    return (
-        <div className='py-5' key={'checkoutSection'}>
-
+    return <>
+         <div className='container mt-5' >
+    <div  id='registerForm' className='d-flex shadow-lg px-4 rounded-5'>
+  <div className='col-md-7 d-flex align-items-center'>
+    <img src={img1} className='w-100' alt="logo2" />
+    </div>
+    <div className='col-md-5 d-flex align-items-center '>
+      <div className='w-100'>
+    <div className='py-3'>
+    <h2 className='text-dark my-3 -position-relative  text-center '>Check Out Form</h2>
             <form onSubmit={forms.handleSubmit}>
-                <div className='my-2'>
-                    <label htmlFor="details">Enter your details</label>
-                    <input onBlur={forms.handleBlur} onChange={forms.handleChange} type="text" className='form-control' name="details" id="details" />
+                <div className='my-3'>
+                    <input placeholder='Enter your details' onBlur={forms.handleBlur} onChange={forms.handleChange} type="text" className='form-control' name="details" id="details" />
                     {forms.touched.details ? <p class="mt-2 text-danger">{forms.errors.details}</p> : ""}
 
                 </div>
-                <div className='my-2'>
-                    <label htmlFor="phone">Phone</label>
-                    <input onBlur={forms.handleBlur} onChange={forms.handleChange} type="tel" className='form-control' name="phone" id="phone" />
+                <div className='my-3'>
+                    <input placeholder='Phone' onBlur={forms.handleBlur} onChange={forms.handleChange} type="tel" className='form-control' name="phone" id="phone" />
                     {forms.touched.phone ? <p class="mt-2 text-danger">{forms.errors.phone}</p> : ""}
                 </div>
 
-                <div className='my-2'>
-                    <label htmlFor="city">City</label>
-                    <input onBlur={forms.handleBlur} onChange={forms.handleChange} type="text" className='form-control' name="city" id="city" />
+                <div className='my-3'>
+    
+                    <input placeholder='City' onBlur={forms.handleBlur} onChange={forms.handleChange} type="text" className='form-control' name="city" id="city" />
                     {forms.touched.city ? <p class="mt-2 text-danger">{forms.errors.city}</p> : ""}
                 </div>
                 <button  disabled={!(forms.isValid && forms.dirty)} type='submit' className='btn text-white bg-main mt-2 py-2 w-100 btn-sm d-flex align-items-center text-center justify-content-center'>
@@ -63,7 +68,11 @@ export default function CheckOut() {
 
             </form>
 
-
+            </div>
+            </div>
+            </div>
+            </div>
         </div>
-    )
+
+    </>
 }

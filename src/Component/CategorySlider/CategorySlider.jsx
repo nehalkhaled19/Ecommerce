@@ -15,11 +15,11 @@ export default function CategorySlider() {
     useEffect(() => {
         dispat(categoryData())
     }, [])
-    return <div key={'CategorySliderSection'}>
+    return <div >
         <OwlCarousel className=' owl-carousel owl-reponsive-breakpoint owl-theme my-5 ' autoplay={true}
         autoplayTimeout={2500} responsive={{ 0: { items: 1 } , 480: { items: 2 }, 767: { items: 3 } , 990: { items: 5 }, 1200: { items: 6 }}}  loop dots={true} >
             {list?.map((e) => {
-                return <div class='item mx-2 img-category'>
+                return <div className='category' id='catergorySlider' class='item mx-2 img-category'>
                     <img className='small-img rounded-1 ' src={e.image} alt="img1" />
                     <h5 className='mt-2 text-center'>{e.name}</h5>
                 </div>

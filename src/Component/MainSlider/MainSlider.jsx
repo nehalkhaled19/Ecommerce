@@ -19,7 +19,7 @@ export default function MainSlider() {
 
     return (
         <div >
-            <div key={'mainSliderSection'} className="row gx-0 ">
+            <div className="row gx-0 ">
                 <div className="col-md-9  my-2 pe-md-4 ">
 
                     <div className=' rounded-3 position-relative overflow-hidden imgSlider' >

@@ -54,7 +54,7 @@ export default function Login({ saveData }) {
 
 
   return (
-    <div >
+    <div className='container mt-5' >
     <div  id='registerForm' className='d-flex shadow-lg px-4 rounded-5'>
   <div className='col-md-7 d-flex align-items-center'>
     <img src={img1} className='w-100' alt="logo2" />
@@ -65,7 +65,7 @@ export default function Login({ saveData }) {
     <h2 className='text-dark my-3 -position-relative  text-center '>Login Form</h2>
 
       {errMessage == "" ? null : <div className='alert alert-danger'>{errMessage}</div>}
-      <form key={'loginForm'} onSubmit={forms.handleSubmit}>
+      <form  onSubmit={forms.handleSubmit}>
         <div className='my-4'>
           <input onBlur={forms.handleBlur} placeholder='email' onChange={forms.handleChange} type="email" className='form-control' name="email" id="email" />
           {forms.touched.email ? <p class="mt-2 text-danger">{forms.errors.email}</p> : ""}

@@ -67,7 +67,7 @@ export default function ForgetPass() {
 
 
 
-    return <div>
+    return <div className='container mt-5'>
         <div  id='registerForm' className='d-flex shadow-lg px-4 rounded-5'>
     <div className='col-md-7 d-flex align-items-center'>
       <img src={img1} className='w-100' alt="logo2" />
@@ -89,7 +89,7 @@ export default function ForgetPass() {
         <div>
         </div>
         </div>
-        <div  id='forCode' key={'codeForm'} className='d-none w-100'>
+        <div  id='forCode' className='d-none w-100'>
       <h2 className='text-dark my-4 position-relative'>Enter code:</h2>
             <form onSubmit={getCode.handleSubmit}>
                 <div className='my-2'>
