@@ -8,9 +8,6 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { CartContext } from '../../Context/CartContext'
 import toast, { Toaster } from 'react-hot-toast';
 import { useContext } from 'react';
-import Footer from '../Footer/Footer';
-
-
 
 export default function ProductDetails() {
     let { addToCart, addToWishList, deletePro, getWishListData,setNum } = useContext(CartContext)

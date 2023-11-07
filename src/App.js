@@ -18,29 +18,24 @@ import CartContextProvider from './Context/CartContext'
 import CheckOut from './Component/CheckOut/CheckOut';
 import Category from './Component/Category/Category';
 import { Provider } from 'react-redux';
-import {categoryConfigureStore} from './Redux/store';
+import { categoryConfigureStore } from './Redux/store';
 import Brand from './Component/Brands/Brand';
 import WishList from './Component/WishList/WishList';
-
-
-
-
-
-
+import AllOrders from './Component/AllOrders/AllOrders';
 
 
 function App() {
   let [userData, setData] = useState(null)
 
-    // check users
-    useEffect(() => {
-      if (localStorage.getItem("userToken")) {
-        let token = localStorage.getItem("userToken")
-        let data = jwtDecode(token)
-        saveData(data)
-      }
-    }, [])
-  
+  // check users
+  useEffect(() => {
+    if (localStorage.getItem("userToken")) {
+      let token = localStorage.getItem("userToken")
+      let data = jwtDecode(token)
+      saveData(data)
+    }
+  }, [])
+
 
   // to save user
   function saveData(x) {
@@ -61,54 +56,55 @@ function App() {
   function ProtectedRouter(x) {
     if (localStorage.getItem("userToken")) {
       return x.children
+    
     }
     else {
       return <Navigate to='../login' />
     }
   }
 
-// logout
+  // logout
   function logout() {
     localStorage.removeItem("userToken")
     saveData(null)
     localStorage.removeItem('ClassName')
     localStorage.removeItem("cartNum")
-    localStorage.removeItem("haveCart")
-
     return <Navigate to='../login' />
   }
 
   // rooting
   let routes = createBrowserRouter([
     {
-      path: 'Ecommerce', element: <Layout logout={logout} userData={userData} />, children: [
-        { path: 'home', element: <ProtectedRouter>< Home userData={userData} /></ProtectedRouter> },
-        { path: 'cart', element: <ProtectedRouter><Cart /></ProtectedRouter> },
-        { path: 'brands', element: <ProtectedRouter><Brand /></ProtectedRouter> },
-        { path: 'product', element: <ProtectedRouter><Product /></ProtectedRouter> },
-        { path: 'wishlist', element: <ProtectedRouter><WishList/></ProtectedRouter> },
-        { path: 'checkOut/:id', element: <ProtectedRouter><CheckOut /></ProtectedRouter> },
-        { path: 'productDetails/:id', element: <ProtectedRouter><ProductDetails /></ProtectedRouter> },
-        { path: 'category', element: <ProtectedRouter><Category /></ProtectedRouter> },
-        { path: 'forgetPass', element: <ForgetPass /> },
-        { path: 'resetPass', element: <ResetPass /> },
-        { path: '*', element: <Notfound /> },
-        { index: true, element: <SaveUser><Register/></SaveUser> },
-        { path: 'login', element: <Login saveData={saveData} /> },
-        { path: 'signout', element: <Signout /> },
-      ]
-    }
+    path: '', element: <Layout logout={logout} userData={userData} />, children: [
+      { path: 'home', element: <ProtectedRouter>< Home userData={userData} /></ProtectedRouter> },
+      { path: 'cart', element: <ProtectedRouter><Cart /></ProtectedRouter> },
+      { path: 'brands', element: <ProtectedRouter><Brand /></ProtectedRouter> },
+      { path: 'product', element: <ProtectedRouter><Product /></ProtectedRouter> },
+      { path: 'wishlist', element: <ProtectedRouter><WishList /></ProtectedRouter> },
+      { path: 'checkOut/:id', element: <ProtectedRouter><CheckOut /></ProtectedRouter> },
+      { path: 'productDetails/:id', element: <ProtectedRouter><ProductDetails /></ProtectedRouter> },
+      { path: 'category', element: <ProtectedRouter><Category /></ProtectedRouter> },
+      { path: 'orders/user/:id', element: <ProtectedRouter><AllOrders /></ProtectedRouter> },
+      { path: 'allorders', element: <ProtectedRouter><AllOrders /></ProtectedRouter> },
+      { path: 'forgetPass', element: <ForgetPass /> },
+      { path: 'resetPass', element: <ResetPass /> },
+      { path: '*', element: <Notfound /> },
+      { index: true, element: <SaveUser><Register /></SaveUser> },
+      { path: 'login', element: <Login saveData={saveData} /> },
+      { path: 'signout', element: <Signout /> },
+    ]
+    },
   ])
-  return (
-    <>
+return (
+  <>
     <Provider store={categoryConfigureStore}>
-    <CartContextProvider>
+      <CartContextProvider>
         <RouterProvider router={routes} />
       </CartContextProvider>
     </Provider>
 
-    </>
-  )
+  </>
+)
 }
 
 export default App;

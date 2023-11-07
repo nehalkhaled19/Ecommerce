@@ -6,6 +6,7 @@ import { CartContext } from '../../Context/CartContext'
 export default function Nav({ userData, logout }) {
   let { num } = useContext(CartContext)
 
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top py-3">
@@ -24,6 +25,7 @@ export default function Nav({ userData, logout }) {
                   <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'home'}>Home</NavLink>
                   <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'product'}>Products</NavLink>
                   <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'cart'}>Cart</NavLink>
+                  <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'orders/user/' + userData.id}>All orders</NavLink>
                   <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'brands'}>Brands</NavLink>
                   <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'category'}>Categories</NavLink>
                   <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'wishList'}>Wish List</NavLink>

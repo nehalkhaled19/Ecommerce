@@ -21,9 +21,8 @@ export default function CartContextProvider(props) {
         if (x != 0 || x == undefined) {
             localStorage.setItem('cartNum', myReq.data.numOfCartItems)
             x = myReq.data.numOfCartItems
-            setNum(localStorage.getItem('cartNum'))
+            setNum(myReq.data.numOfCartItems)
         }
-        console.log(x);
     }
     getAllData()
 
