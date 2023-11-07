@@ -10,26 +10,25 @@ import cart from '../../imgs/cart1.png'
 
 
 export default function Cart() {
-  let { getData, deleteData, updataProduct, setCartCount, clearCart, cartCount } = useContext(CartContext)
+  let { getData, deleteData, updataProduct,clearCart, setNum} = useContext(CartContext)
   let [list, setList] = useState(null)
   let [count, setCount] = useState('')
 
 
-
-
   useEffect(() => {
-    if (cartCount != 0) {
+    if ( localStorage.getItem('cartNum') != 0) {
       $('.loading').fadeIn(1500)
       cartData()
     }
-    check()
+    else{
+      check()
+
+    }
   }, [])
   function check() {
-    if (localStorage.getItem('haveCart') == 'no' || cartCount == 0) {
-      // $('.loading').fadeIn(1500)
+    if (localStorage.getItem('cartNum') == 0) {
       $('#existcart').addClass('d-none')
       $('#emptycart').removeClass('d-none')
-
       $('.loading').fadeOut(500)
     }
 
@@ -43,7 +42,10 @@ export default function Cart() {
     $('.loading').fadeIn(1500)
     let { data } = await getData()
     setCount(data.numOfCartItems)
-    setCartCount(data.numOfCartItems)
+     localStorage.setItem('cartNum',data.numOfCartItems)
+     setNum(data.numOfCartItems)
+
+
     setList(data.data)
     $('.loading').fadeOut(500)
   }
@@ -53,18 +55,22 @@ export default function Cart() {
     $('.loading').fadeIn(500)
     let { data } = await deleteData(id)
     setList(data.data)
-    setCartCount(data.numOfCartItems)
     setCount(data.numOfCartItems)
+    localStorage.setItem('cartNum', data.numOfCartItems)
+    setNum(data.numOfCartItems)
+
+
     $('.loading').fadeOut(500)
   }
   // clear cart
   async function DeleteCart() {
-    localStorage.setItem('haveCart', 'no')
+    $('.loading').fadeIn(500)
     let { data } = await clearCart()
     $('#existcart').addClass('d-none')
     $('#emptycart').removeClass('d-none')
     setList(null)
-    setCartCount(0)
+    localStorage.setItem('cartNum', 0)
+    setNum(0)
     setCount(0)
 
 
@@ -79,8 +85,7 @@ export default function Cart() {
     if (document.getElementById("productNum").innerHTML == 1) {
       DeleteProduct(id)
     }
-    // let { data } = await updataProduct(id, count)
-    // setList(data.data)
+
   }
 
 
@@ -142,9 +147,7 @@ export default function Cart() {
     </div>
     <div id='emptycart' className='mt-5 container text-center d-none'>
       <img src={cart} className='m-auto  object' alt="empty cart" />
-      <p className='my-3 text-main' style={{fontSize:'30px'}}>Your Cart is empty</p>
-
-
+      <p className='my-3 text-main' style={{fontSize:'30px'}}>Your Cart is Empty</p>
     </div>
   </>
 }

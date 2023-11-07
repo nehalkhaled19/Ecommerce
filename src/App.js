@@ -72,7 +72,9 @@ function App() {
     localStorage.removeItem("userToken")
     saveData(null)
     localStorage.removeItem('ClassName')
+    localStorage.removeItem("cartNum")
     localStorage.removeItem("haveCart")
+
     return <Navigate to='../login' />
   }
 

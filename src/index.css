@@ -11,6 +11,11 @@
 
 body {
     font-family: var(--font-family) !important;
+        ::selection {
+            color: rgb(255, 255, 255);
+            background: #4fa74f;
+        }
+    
 }
 
 .rating-color {

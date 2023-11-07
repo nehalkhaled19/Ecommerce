@@ -9,7 +9,7 @@ import img from '../../imgs/cart1.png'
 
 
 export default function WishList() {
-    let { getWishListData, addToCart, setCartCount, deletePro, cartCount } = useContext(CartContext)
+    let { getWishListData, addToCart, deletePro, setNum} = useContext(CartContext)
     let [list, setList] = useState(null)
 
     // get data
@@ -26,9 +26,9 @@ export default function WishList() {
     // add to cart
     async function add(id) {
         let { data } = await addToCart(id)
-        localStorage.setItem('haveCart', 'yes')
         if (data.status == 'success') {
-            setCartCount(data.numOfCartItems)
+            localStorage.setItem('cartNum', data.numOfCartItems)
+            setNum(data.numOfCartItems)
             toast.success(data.message)
         }
     }
@@ -85,7 +85,7 @@ export default function WishList() {
                 })}</div>
             <div id='empty' className='mt-5 py-1 px-3 d-none text-center'>
                 <img src={img} className='object ' alt="empty wishlist" />
-                <p className='my-3 text-main' style={{ fontSize: '30px' }}>Your Wish List is empty</p>
+                <p className='my-3 text-main' style={{ fontSize: '30px' }}>Your Wish List is Empty</p>
 
 
             </div>

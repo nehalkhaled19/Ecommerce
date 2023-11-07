@@ -13,13 +13,13 @@ import Footer from '../Footer/Footer';
 
 
 export default function ProductDetails() {
-    let { addToCart, setCartCount,addToWishList,deletePro,getWishListData} = useContext(CartContext)
+    let { addToCart, addToWishList, deletePro, getWishListData,setNum } = useContext(CartContext)
     let [product, setProduct] = useState(null)
     let { id } = useParams()
     let x = []
     let [y, setY] = useState([])
 
-  
+
     useEffect(() => {
         show(id)
         getWishData()
@@ -69,9 +69,11 @@ export default function ProductDetails() {
     // add to cart
     async function add(id) {
         let { data } = await addToCart(id)
-        localStorage.setItem('haveCart', 'yes')
         if (data.status == 'success') {
-            setCartCount(data.numOfCartItems)
+            localStorage.setItem('cartNum', data.numOfCartItems)
+            setNum(data.numOfCartItems)
+
+
             toast.success(data.message)
         }
     }
@@ -83,40 +85,40 @@ export default function ProductDetails() {
             <i className='fa-solid fa-spinner fa-spin fa-5x text-main'></i>
         </div>
         <div className="container">
-        {product != null ? <div className="row align-items-center my-5  mt-5">
-            <div className="col-md-3 my-3">
-                <OwlCarousel className='owl-theme' items={1} loop  >
-                    {product.images.map((e) => {
-                        return <div key={'productDetailsSection'}  class='item'>
-                            <img src={e} className='w-100' alt={product.category.name} />
-                        </div>
-                    })}
-                </OwlCarousel>
-            </div>
-            <div className="col-md-9 mb-4">
-                <div>
-                    <h3>{product.title}</h3>
-
-                    <p className='text-muted'>{product.description}</p>
-
-                    <span className='text-main font-sm fw-ligther'>{product.category.slug}</span>
-
-                    <div className=' w-100 mt-3  d-flex justify-content-between'>
-                        <span className='font-sm'> {product.price} EGP</span>
-                        <span className='font-sm'>
-                            {product.ratingsAverage}
-                            <i className='fa-solid ms-1 fa-star rating-color'></i>
-                        </span>
-                    </div>
-                    <div className='d-flex  justify-content-between  align-items-center mt-2 '>
-                        <button onClick={() => add(product._id)} className='btn text-white bg-main w-75  btn-sm'>Add to cart</button>
-                        <i id={product._id} onClick={() => checkWishList(product._id)} className='fa-solid ms-1 fa-heart fa-xl cursor-pointer'></i>
-
-                    </div>
-
+            {product != null ? <div className="row align-items-center my-5  mt-5">
+                <div className="col-md-3 my-3">
+                    <OwlCarousel className='owl-theme' items={1} loop  >
+                        {product.images.map((e) => {
+                            return <div key={'productDetailsSection'} class='item'>
+                                <img src={e} className='w-100' alt={product.category.name} />
+                            </div>
+                        })}
+                    </OwlCarousel>
                 </div>
-            </div>
-        </div> : ""}
+                <div className="col-md-9 mb-4">
+                    <div>
+                        <h3>{product.title}</h3>
+
+                        <p className='text-muted'>{product.description}</p>
+
+                        <span className='text-main font-sm fw-ligther'>{product.category.slug}</span>
+
+                        <div className=' w-100 mt-3  d-flex justify-content-between'>
+                            <span className='font-sm'> {product.price} EGP</span>
+                            <span className='font-sm'>
+                                {product.ratingsAverage}
+                                <i className='fa-solid ms-1 fa-star rating-color'></i>
+                            </span>
+                        </div>
+                        <div className='d-flex  justify-content-between  align-items-center mt-2 '>
+                            <button onClick={() => add(product._id)} className='btn text-white bg-main w-75  btn-sm'>Add to cart</button>
+                            <i id={product._id} onClick={() => checkWishList(product._id)} className='fa-solid ms-1 fa-heart fa-xl cursor-pointer'></i>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div> : ""}
         </div>
     </>
 

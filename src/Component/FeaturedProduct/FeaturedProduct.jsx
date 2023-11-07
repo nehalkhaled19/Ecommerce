@@ -9,7 +9,7 @@ import 'aos/dist/aos.css';
 
 
 export default function FeaturedProduct() {
-    let { addToCart, setCartCount, addToWishList, getWishListData, deletePro } = useContext(CartContext)
+    let { addToCart, addToWishList, getWishListData, deletePro, setNum } = useContext(CartContext)
     let [allProduct, setProduct] = useState([])
     let [someProduct, setSomeProduct] = useState([])
     let [y, setY] = useState([])
@@ -55,9 +55,9 @@ function page(){
     // add to cart
     async function add(id) {
         let { data } = await addToCart(id)
-        localStorage.setItem('haveCart', 'yes')
         if (data.status == 'success') {
-            setCartCount(data.numOfCartItems)
+            localStorage.setItem('cartNum', data.numOfCartItems)
+            setNum(data.numOfCartItems)
             toast.success(data.message)
         }
    
@@ -146,23 +146,25 @@ function page(){
                     </div>
                 </div>
             </div>
-
-            <nav aria-label="Page navigation example">
-                <ul className="pagination justify-content-center">
+ <nav aria-label="Page navigation example">
+                <ul className="pagination justify-content-center my-5">
                     <li className="page-item" >
-                        <a className="page-link text-main pages" href="#"  aria-label="Previous">
-                            <span aria-hidden="true" className="pages" >&laquo;</span>
+                        <a className="page-link text-main pages cursor-pointer" num={'1'} aria-label="Previous">
+                            <span aria-hidden="true" num={'1'} className="pages" >&laquo;</span>
                         </a>
                     </li>
                     <li className="page-item"><a num={'1'} className="page-link text-main pages cursor-pointer" onClick={page()} >1</a></li>
                     <li className="page-item"><a num={'2'}  className="page-link text-main pages cursor-pointer" onClick={page()} >2</a></li>
                     <li className="page-item">
-                        <a  className="page-link text-main pages" href="#"  aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
+                        <a  className="page-link text-main pages cursor-pointer" num={'2'} aria-label="Next">
+                            <span aria-hidden="true" className='pages' num={'2'}>&raquo;</span>
                         </a>
                     </li>
                 </ul>
-            </nav>
+            </nav> 
+
+
+
         </>
     )
 }

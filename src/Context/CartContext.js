@@ -5,21 +5,33 @@ import { createContext, useEffect, useState } from "react";
 export let CartContext = createContext()
 
 export default function CartContextProvider(props) {
-    let [cartCount, setCartCount] = useState("")
+
+    // head
     let head = {
         token: localStorage.getItem('userToken')
     }
-  useEffect(()=>{
-    if (cartCount != 0 ) {
-        async function getAllData() {
-            let { data } = await getData()
-            setCartCount(data.numOfCartItems)
+    let [num, setNum] = useState(null)
+    let x;
+    async function getAllData() {
+        let myReq = await getData().catch((err) => {
+            localStorage.setItem('cartNum', 0)
+            x = 0
+            setNum(localStorage.getItem('cartNum'))
+        })
+        if (x != 0 || x == undefined) {
+            localStorage.setItem('cartNum', myReq.data.numOfCartItems)
+            x = myReq.data.numOfCartItems
+            setNum(localStorage.getItem('cartNum'))
         }
-        getAllData()
+        console.log(x);
     }
-  },[])
-  
-    
+    getAllData()
+
+
+
+
+
+
     // delete from cart
     function deleteData(id) {
         return axios.delete(`https://ecommerce.routemisr.com/api/v1/cart/${id}`, {
@@ -100,7 +112,7 @@ export default function CartContextProvider(props) {
 
     }
 
-    return <CartContext.Provider value={{ cartCount,clearCart, deletePro, getWishListData, addToWishList, setCartCount, addToCart, getData, deleteData, updataProduct, CheckOut }}>
+    return <CartContext.Provider value={{ num, setNum, clearCart, deletePro, getWishListData, addToWishList, addToCart, getData, deleteData, updataProduct, CheckOut }}>
         {props.children}
     </CartContext.Provider>
 }

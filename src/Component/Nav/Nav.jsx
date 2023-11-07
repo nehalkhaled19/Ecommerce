@@ -4,12 +4,11 @@ import logo from '../../images/freshcart-logo.svg'
 import { CartContext } from '../../Context/CartContext'
 
 export default function Nav({ userData, logout }) {
-
-  let { cartCount } = useContext(CartContext)
+  let { num } = useContext(CartContext)
 
   return (
     <div>
-      <nav  className="navbar navbar-expand-lg bg-body-tertiary fixed-top py-3">
+      <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top py-3">
         <div className="container">
 
           <Link className='nav-brand ' to={"home"}>
@@ -40,17 +39,17 @@ export default function Nav({ userData, logout }) {
                 </>
 
                 : <>
-                 <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'cart'}>
-                 <div className='position-relative mx-3'>
+                  <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'cart'}>
+                    <div className='position-relative mx-3'>
                       <i className="fa-solid fa-cart-shopping text-main fa-lg"></i>
 
                       <span className="bg-main number  badge rounded-pill bg-danger">
-                        {cartCount}
+                        {num}
                       </span>
 
                     </div>
-                 </NavLink>
-             
+                  </NavLink>
+
                   <span onClick={logout} className='nav-link cursor-pointer'>SignOut</span>  </>}
             </ul>
 
