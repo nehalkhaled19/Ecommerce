@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Ecommerce/static/css/main.24ee2783.css",
-    "main.js": "/Ecommerce/static/js/main.2e610309.js",
+    "main.css": "/Ecommerce/static/css/main.79e143fe.css",
+    "main.js": "/Ecommerce/static/js/main.82301215.js",
     "static/js/787.ec704a7a.chunk.js": "/Ecommerce/static/js/787.ec704a7a.chunk.js",
     "static/media/5062532-fotor-2023110523261.jpg": "/Ecommerce/static/media/5062532-fotor-2023110523261.c45c9a5871d9d7d55f41.jpg",
     "static/media/fa-solid-900.ttf": "/Ecommerce/static/media/fa-solid-900.d75e3fd1eb12e9bd6655.ttf",
@@ -15,17 +15,17 @@
     "static/media/sample-2 (1).jpg": "/Ecommerce/static/media/sample-2 (1).590cf3f683be82b2f690.jpg",
     "static/media/app-removebg-preview (1).png": "/Ecommerce/static/media/app-removebg-preview (1).f32552298c0c700a6da6.png",
     "static/media/fa-regular-400.woff2": "/Ecommerce/static/media/fa-regular-400.b041b1fa4fe241b23445.woff2",
-    "static/media/freshcart-logo.svg": "/Ecommerce/static/media/freshcart-logo.53f7a424c3aedc30a0fb46dc2278137c.svg",
+    "static/media/logo1.png": "/Ecommerce/static/media/logo1.27012f848affd304dfa9.png",
     "static/media/sub-banner-1 (1).jpg": "/Ecommerce/static/media/sub-banner-1 (1).b049397ae1697631d377.jpg",
     "static/media/fa-v4compatibility.ttf": "/Ecommerce/static/media/fa-v4compatibility.c6a0c95b0a95c4553700.ttf",
     "static/media/fa-v4compatibility.woff2": "/Ecommerce/static/media/fa-v4compatibility.1bac2991f3dbfa237aec.woff2",
     "index.html": "/Ecommerce/index.html",
-    "main.24ee2783.css.map": "/Ecommerce/static/css/main.24ee2783.css.map",
-    "main.2e610309.js.map": "/Ecommerce/static/js/main.2e610309.js.map",
+    "main.79e143fe.css.map": "/Ecommerce/static/css/main.79e143fe.css.map",
+    "main.82301215.js.map": "/Ecommerce/static/js/main.82301215.js.map",
     "787.ec704a7a.chunk.js.map": "/Ecommerce/static/js/787.ec704a7a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.24ee2783.css",
-    "static/js/main.2e610309.js"
+    "static/css/main.79e143fe.css",
+    "static/js/main.82301215.js"
   ]
 }
