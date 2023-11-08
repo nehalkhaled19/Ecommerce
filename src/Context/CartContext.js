@@ -10,7 +10,7 @@ export default function CartContextProvider(props) {
     let head = {
         token: localStorage.getItem('userToken')
     }
-    let [num, setNum] = useState(null)
+    let [num, setNum] = useState(localStorage.getItem('cartNum'))
     let x;
     async function getAllData() {
         let myReq = await getData().catch((err) => {

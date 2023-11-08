@@ -1,9 +1,9 @@
 import React from 'react'
 import Nav from '../Nav/Nav'
 
-export default function AllOrders() {
+export default function AllOrders(userData) {
+  console.log(userData);
   return <>
-
     <div className='container mt-5 py-2'>
         <div className='row align-items-center'>
             <div className='col-6'>

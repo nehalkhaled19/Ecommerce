@@ -55,6 +55,7 @@ function App() {
   // to protect router
   function ProtectedRouter(x) {
     if (localStorage.getItem("userToken")) {
+  
       return x.children
     
     }
@@ -75,7 +76,7 @@ function App() {
   // rooting
   let routes = createBrowserRouter([
     {
-    path: '', element: <Layout logout={logout} userData={userData} />, children: [
+    path: 'Ecommerce', element: <Layout logout={logout} userData={userData} />, children: [
       { path: 'home', element: <ProtectedRouter>< Home userData={userData} /></ProtectedRouter> },
       { path: 'cart', element: <ProtectedRouter><Cart /></ProtectedRouter> },
       { path: 'brands', element: <ProtectedRouter><Brand /></ProtectedRouter> },
@@ -84,16 +85,21 @@ function App() {
       { path: 'checkOut/:id', element: <ProtectedRouter><CheckOut /></ProtectedRouter> },
       { path: 'productDetails/:id', element: <ProtectedRouter><ProductDetails /></ProtectedRouter> },
       { path: 'category', element: <ProtectedRouter><Category /></ProtectedRouter> },
-      { path: 'orders/user/:id', element: <ProtectedRouter><AllOrders /></ProtectedRouter> },
-      { path: 'allorders', element: <ProtectedRouter><AllOrders /></ProtectedRouter> },
+      // { path: '', element: <ProtectedRouter><AllOrders /></ProtectedRouter> },
       { path: 'forgetPass', element: <ForgetPass /> },
       { path: 'resetPass', element: <ResetPass /> },
       { path: '*', element: <Notfound /> },
-      { index: true, element: <SaveUser><Register /></SaveUser> },
+      { index: '', element: <SaveUser><Register /></SaveUser> },
       { path: 'login', element: <Login saveData={saveData} /> },
       { path: 'signout', element: <Signout /> },
     ]
     },
+    {
+      path: '', element: <Layout logout={logout} userData={userData} />, children: [
+        {path: 'allorders', element: <ProtectedRouter>< AllOrders userData={userData} /></ProtectedRouter> },
+      ]
+      },
+
   ])
 return (
   <>
