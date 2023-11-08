@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import logo from '../../images/freshcart-logo.svg'
+import logo from '../../imgs/logo1.png'
 import { CartContext } from '../../Context/CartContext'
 
 export default function Nav({ userData, logout }) {
@@ -13,7 +13,7 @@ export default function Nav({ userData, logout }) {
         <div className="container">
 
           <Link className='nav-brand ' to={"home"}>
-            <img className='object' src={logo} alt="logo" />
+            <img className='object w-50 bg-info' src={logo} alt="logo" />
           </Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
