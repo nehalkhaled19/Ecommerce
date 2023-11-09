@@ -17,7 +17,21 @@ export default function FeaturedProduct() {
     let x = []
     localStorage.ClassName = "text-danger";
 
-    // to show products
+    // let url = "https://ecommerce.routemisr.com"
+
+
+    
+    // // to show products
+    // function getProductes(page = 1) {
+    //     return axios.get(`${url}/api/v1/products?page=${page}`)
+    //   }
+    
+    //   let { isLoading, data } = useQuery('AllOrders', () => getProductes(idForUser))
+      
+
+
+
+
     useEffect(() => {
         getProductes()
         getWishData()

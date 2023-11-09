@@ -383,6 +383,9 @@ a:hover {
 
 /* mobile */
 @media (max-width: 480px) {
+    .centerd{
+       display: inline;
+    }
     .slider-layer {
         width: 40%;
         /* padding: 0 15px; */

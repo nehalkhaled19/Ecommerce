@@ -26,6 +26,7 @@ import AllOrders from './Component/AllOrders/AllOrders';
 
 function App() {
   let [userData, setData] = useState(null)
+  
 
   // check users
   useEffect(() => {
@@ -85,7 +86,6 @@ function App() {
       { path: 'checkOut/:id', element: <ProtectedRouter><CheckOut /></ProtectedRouter> },
       { path: 'productDetails/:id', element: <ProtectedRouter><ProductDetails /></ProtectedRouter> },
       { path: 'category', element: <ProtectedRouter><Category /></ProtectedRouter> },
-      // { path: '', element: <ProtectedRouter><AllOrders /></ProtectedRouter> },
       { path: 'forgetPass', element: <ForgetPass /> },
       { path: 'resetPass', element: <ResetPass /> },
       { path: '*', element: <Notfound /> },

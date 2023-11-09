@@ -1,13 +1,13 @@
 import React, { useContext } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import logo from '../../imgs/logo1.png'
-// import logo from '../../images/freshcart-logo.svg'
+
 
 import { CartContext } from '../../Context/CartContext'
 
 export default function Nav({ userData, logout }) {
   let { num } = useContext(CartContext)
-console.log(userData);
+
 
   return (
     <div>
@@ -26,13 +26,13 @@ console.log(userData);
             <div className='m-auto'>
               {userData != null ?
                 <ul className="navbar-nav mb-2 mb-lg-0  ">
-                  <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'Ecommerce/home'}>Home</NavLink>
-                  <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'Ecommerce/product'}>Products</NavLink>
-                  <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'Ecommerce/cart'}>Cart</NavLink>
+                  <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'home'}>Home</NavLink>
+                  <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'product'}>Products</NavLink>
+                  <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'cart'}>Cart</NavLink>
                   <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'/allorders' }>All orders</NavLink>
-                  <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'Ecommerce/brands'}>Brands</NavLink>
-                  <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'Ecommerce/category'}>Categories</NavLink>
-                  <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'Ecommerce/wishList'}>Wish List</NavLink>
+                  <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'brands'}>Brands</NavLink>
+                  <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'category'}>Categories</NavLink>
+                  <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'wishList'}>Wish List</NavLink>
                 </ul> : ""}
             </div>
 

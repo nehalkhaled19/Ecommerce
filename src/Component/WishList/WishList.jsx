@@ -52,7 +52,7 @@ export default function WishList() {
         </div>
         <div className='container mt-5'>
             <div id='full' className='mt-5 py-1 px-3'>
-                <h1 className='my-3'>My Wish List</h1>
+                <h1 className='my-3 text-center '>My <span className='text-main'>W</span>ish List</h1>
 
                 {list?.map((e) => {
                     return <div key={e._id} className="row bg-light py-2  border-bottom align-items-center ">

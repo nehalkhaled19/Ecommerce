@@ -94,7 +94,7 @@ export default function Cart() {
       <i className='fa-solid fa-spinner fa-spin fa-5x text-main'></i>
     </div>
     <div id='existcart' className='py-2 container mt-5'>
-      <h1 className=' my-3'>My Cart</h1>
+      <h1 className=' my-3 text-center'>My <span className='text-main'>C</span>art</h1>
       {list?.products.map((e) => {
         return <div key={e._id} className="row m-0 bg-light py-2 border-bottom align-items-center ">
           <div className="col-md-6">
