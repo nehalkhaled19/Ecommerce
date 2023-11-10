@@ -6,6 +6,7 @@ import { useEffect } from 'react'
 import $ from 'jquery'
 import { Link } from 'react-router-dom'
 import cart from '../../imgs/cart1.png'
+import Footer from '../Footer/Footer'
 
 
 
@@ -149,6 +150,7 @@ export default function Cart() {
       <img src={cart} className='m-auto  object' alt="empty cart" />
       <p className='my-3 text-main' style={{fontSize:'30px'}}>Your Cart is Empty</p>
     </div>
+    <Footer></Footer>
   </>
 }
 

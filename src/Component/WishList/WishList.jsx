@@ -6,6 +6,7 @@ import { useEffect } from 'react'
 import $ from 'jquery'
 import toast, { Toaster } from 'react-hot-toast';
 import img from '../../imgs/cart1.png'
+import Footer from '../Footer/Footer'
 
 
 export default function WishList() {
@@ -90,6 +91,7 @@ export default function WishList() {
 
             </div>
         </div>
+        <Footer></Footer>
 
     </>
 }

@@ -2,44 +2,41 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import $ from 'jquery'
 import Footer from '../Footer/Footer'
+import { useQuery } from 'react-query'
+
 
 export default function Brand() {
 
-    let [brands, setBrands] = useState(null)
     let [brandDetails, setBrand] = useState(null)
 
 
-    useEffect(() => {
-        close()
-        brandsData()
-    }, [])
-    function close() {
-   $('#exampleModal1').hide();
-    }
+  
     // all brands
-    async function brandsData() {
-        $('.loading').fadeIn(1000)
-        let { data } = await axios.get(`https://ecommerce.routemisr.com/api/v1/brands`)
-        setBrands(data.data)
-        $('.loading').fadeOut(500)
+    function brandsData() {
+        return axios.get(`https://ecommerce.routemisr.com/api/v1/brands`)
     }
+    let { isLoading, data } = useQuery('brands',brandsData)
+   
     //specific brand
     async function brand(id) {
         let { data } = await axios.get(`https://ecommerce.routemisr.com/api/v1/brands/${id}`)
         setBrand(data.data)
-        $('#exampleModal1').show();
-
+        $('#exampleModal1').fadeIn(500);
     }
+    // close model
+    function close() {
+        $('#exampleModal1').fadeOut(1000);
+    }
+    
 
     return <>
-        <div className='loading position-fixed top-0 end-0 start-0 bottom-0 '>
-            <i className='fa-solid fa-spinner fa-spin fa-5x text-main'></i>
-        </div>
-        <div className='container my-5'>
+       {isLoading ? <div className='loading position-fixed top-0 end-0 start-0 bottom-0 '>
+      <i className='fa-solid fa-spinner fa-spin fa-5x text-main'></i>
+    </div> :<div className='container my-5'>
             <h1 className='text-main text-center my-4' id='sub'>All Brands</h1>
             <div className="row gy-3">
-                {brands?.map((el) => {
-                    return <div  key={'brandSection'} className="col-lg-3 col-md-4 cursor-pointer " onClick={() => brand(el._id)}  >
+                {data?.data.data?.map((el) => {
+                    return <div key={el._id} className="col-lg-3 col-md-4 cursor-pointer " onClick={() => brand(el._id)}  >
                         <div className='border border-1 rounded-2 cardshadow'>
                             <img src={el.image} className='w-100' alt="brand" />
                             <p className='text-center  m-3'>{el.name}</p>
@@ -49,7 +46,8 @@ export default function Brand() {
             </div>
 
         </div>
-        {brandDetails != null ? <div  key={'model'} class="modal bg " id="exampleModal1" >
+}
+        {brandDetails != null ? <div key={'model'} className="modal bg " id="exampleModal1" >
             <div className="modal-dialog modal-dialog-centered">
                 <div className="modal-content">
                     <div className="modal-header">
@@ -74,7 +72,7 @@ export default function Brand() {
                 </div>
             </div>
         </div> : ""}
-<Footer></Footer>
+        <Footer></Footer>
     </>
 
 }

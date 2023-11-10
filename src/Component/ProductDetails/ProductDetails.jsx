@@ -82,11 +82,11 @@ export default function ProductDetails() {
             <i className='fa-solid fa-spinner fa-spin fa-5x text-main'></i>
         </div>
         <div className="container">
-            {product != null ? <div className="row align-items-center my-5  mt-5">
+            {product != null ? <div  className="row align-items-center my-5  mt-5">
                 <div className="col-md-3 my-3">
                     <OwlCarousel className='owl-theme' items={1} loop  >
                         {product.images.map((e) => {
-                            return <div key={'productDetailsSection'} class='item'>
+                            return <div key={product.title} className='item'>
                                 <img src={e} className='w-100' alt={product.category.name} />
                             </div>
                         })}

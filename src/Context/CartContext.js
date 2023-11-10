@@ -14,6 +14,7 @@ export default function CartContextProvider(props) {
     let x;
     async function getAllData() {
         let myReq = await getData().catch((err) => {
+            console.log(err);
             localStorage.setItem('cartNum', 0)
             x = 0
             setNum(localStorage.getItem('cartNum'))
