@@ -380,6 +380,14 @@ a:hover {
     }
 
 }
+.network{
+    position: fixed;
+    padding: 20px;
+    bottom: 30px;
+    left: 30px;
+    z-index: 888888;
+    box-shadow: var(--shadow);
+}
 
 /* mobile */
 @media (max-width: 480px) {

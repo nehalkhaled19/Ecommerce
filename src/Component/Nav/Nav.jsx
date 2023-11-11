@@ -40,7 +40,7 @@ export default function Nav({ userData, logout }) {
 
               {userData == null ?
                 <>
-                  <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={''}>Register</NavLink>
+                  <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'Ecommerce'}>Register</NavLink>
                   <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'login'}>Login</NavLink>
                 </>
 

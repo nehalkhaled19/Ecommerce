@@ -89,7 +89,7 @@ function App() {
       { path: 'forgetPass', element: <ForgetPass /> },
       { path: 'resetPass', element: <ResetPass /> },
       { path: '*', element: <Notfound /> },
-      { index: true, element: <SaveUser><Register /></SaveUser> },
+      { path: 'Ecommerce', element: <SaveUser><Register /></SaveUser> },
       { path: 'login', element: <Login saveData={saveData} /> },
       { path: 'signout', element: <Signout /> },
       {path: 'allorders', element: <ProtectedRouter>< AllOrders userData={userData} /></ProtectedRouter> }
