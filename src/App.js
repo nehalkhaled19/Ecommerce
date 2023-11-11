@@ -89,16 +89,17 @@ function App() {
       { path: 'forgetPass', element: <ForgetPass /> },
       { path: 'resetPass', element: <ResetPass /> },
       { path: '*', element: <Notfound /> },
-      { index: ' ', element: <SaveUser><Register /></SaveUser> },
+      { index: true, element: <SaveUser><Register /></SaveUser> },
       { path: 'login', element: <Login saveData={saveData} /> },
       { path: 'signout', element: <Signout /> },
+      {path: 'allorders', element: <ProtectedRouter>< AllOrders userData={userData} /></ProtectedRouter> }
     ]
     },
-    {
-      path: '', element: <Layout logout={logout} userData={userData} />, children: [
-        {path: 'allorders', element: <ProtectedRouter>< AllOrders userData={userData} /></ProtectedRouter> },
-      ]
-      },
+    // {
+    //   path: '/', element: <Layout logout={logout} userData={userData} />, children: [
+        
+    //   ]
+    //   },
 
   ])
 return (

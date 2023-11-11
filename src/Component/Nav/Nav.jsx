@@ -29,7 +29,7 @@ export default function Nav({ userData, logout }) {
                   <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'home'}>Home</NavLink>
                   <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'product'}>Products</NavLink>
                   <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'cart'}>Cart</NavLink>
-                  <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'allorders' }>All orders</NavLink>
+                  <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'/allorders' }>All orders</NavLink>
                   <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'brands'}>Brands</NavLink>
                   <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'category'}>Categories</NavLink>
                   <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'wishList'}>Wish List</NavLink>
@@ -40,7 +40,7 @@ export default function Nav({ userData, logout }) {
 
               {userData == null ?
                 <>
-                  <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={' '}>Register</NavLink>
+                  <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={''}>Register</NavLink>
                   <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'login'}>Login</NavLink>
                 </>
 

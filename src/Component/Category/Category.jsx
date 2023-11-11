@@ -15,6 +15,7 @@ export default function Category() {
   useEffect(() => {
     $('.loading').fadeIn(1500)
     dispat(categoryData())
+    
     $('.loading').fadeOut(500)
 
   }, [])

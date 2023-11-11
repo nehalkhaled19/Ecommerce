@@ -11,16 +11,27 @@ import cart from '../../imgs/cart1.png'
 export default function AllOrders({ userData }) {
   let idForUser = userData?.id
   let [orders, setOrders] = useState([])
-
+  console.log(userData);
   useEffect(() => {
     $('.loading').fadeIn(1000)
     getAllOrders(idForUser)
   }, [])
   // get data
   async function getAllOrders(id) {
+    console.log(id);
     let { data } = await axios.get(`https://ecommerce.routemisr.com/api/v1/orders/user/${id}`)
     setOrders(data)
-   
+    console.log(orders);
+    if (orders == []) {
+      $('#haveOrders').addClass('d-none')
+      $('#noOrders').removeClass('d-none')
+
+    }
+    if (orders != []) {
+      $('#haveOrders').removeClass('d-none')
+      $('#noOrders').addClass('d-none')
+    }
+
     $('.loading').fadeOut(500)
 
   }
@@ -31,7 +42,7 @@ export default function AllOrders({ userData }) {
       <i className='fa-solid fa-spinner fa-spin fa-5x text-main'></i>
     </div>
     <div className='container mt-5 py-2'>
-      {orders == [] ? <div>
+      <div id='haveOrders'>
         <h2 className='text-center my-3'>Your <span className='text-main'>O</span>rders Summry</h2>
         {orders?.map((e) => {
           return <div key={e._id} className='mb-5 mt-4 border-end border-start'>
@@ -76,9 +87,10 @@ export default function AllOrders({ userData }) {
             })}
           </div>
         })}
-      </div > : <div className='container mt-5 py-2 text-center'>  <img src={cart} className='m-auto  object' alt="empty cart" />
+      </div >
+      <div id='noOrders' className='container mt-5 py-2 text-center d-none'>  <img src={cart} className='m-auto  object' alt="empty cart" />
         <p className='my-3 text-main' style={{ fontSize: '30px' }}>No Orders Delivered Yet</p>
-      </div>}
+      </div>
 
     </div>
 
