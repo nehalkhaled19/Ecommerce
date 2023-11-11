@@ -77,7 +77,7 @@ function App() {
   // rooting
   let routes = createBrowserRouter([
     {
-    path: 'Ecommerce', element: <Layout logout={logout} userData={userData} />, children: [
+    path: '/', element: <Layout logout={logout} userData={userData} />, children: [
       { path: 'home', element: <ProtectedRouter>< Home userData={userData} /></ProtectedRouter> },
       { path: 'cart', element: <ProtectedRouter><Cart /></ProtectedRouter> },
       { path: 'brands', element: <ProtectedRouter><Brand /></ProtectedRouter> },

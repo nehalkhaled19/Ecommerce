@@ -68,12 +68,12 @@ export default function Login({ saveData }) {
       <form  onSubmit={forms.handleSubmit}>
         <div className='my-4'>
           <input onBlur={forms.handleBlur} placeholder='email' onChange={forms.handleChange} type="email" className='form-control' name="email" id="email" />
-          {forms.touched.email ? <p class="mt-2 text-danger">{forms.errors.email}</p> : ""}
+          {forms.touched.email ? <p className="mt-2 text-danger">{forms.errors.email}</p> : ""}
 
         </div>
         <div className='my-4'>
           <input onBlur={forms.handleBlur} placeholder='password'  onChange={forms.handleChange} type="password" className='form-control' name="password" id="password" />
-          {forms.touched.password ? <p class="mt-2 text-danger">{forms.errors.password}</p> : ""}
+          {forms.touched.password ? <p className="mt-2 text-danger">{forms.errors.password}</p> : ""}
         </div>
 
         <Link to={"../forgetPass"} className='forget'>Forget Password?</Link >

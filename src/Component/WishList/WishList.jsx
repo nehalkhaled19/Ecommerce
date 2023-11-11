@@ -51,7 +51,7 @@ export default function WishList() {
         <div className='loading position-fixed top-0 end-0 start-0 bottom-0 '>
             <i className='fa-solid fa-spinner fa-spin fa-5x text-main'></i>
         </div>
-        <div className='container mt-5'>
+        <div className='container mt-5 pb-5'>
             <div id='full' className='mt-5 py-1 px-3'>
                 <h1 className='my-3 text-center '>My <span className='text-main'>W</span>ish List</h1>
 

@@ -11,17 +11,17 @@ import Footer from '../Footer/Footer'
 
 
 export default function Cart() {
-  let { getData, deleteData, updataProduct,clearCart, setNum} = useContext(CartContext)
+  let { getData, deleteData, updataProduct, clearCart, setNum } = useContext(CartContext)
   let [list, setList] = useState(null)
   let [count, setCount] = useState('')
 
 
   useEffect(() => {
-    if ( localStorage.getItem('cartNum') != 0) {
+    if (localStorage.getItem('cartNum') != 0) {
       $('.loading').fadeIn(1500)
       cartData()
     }
-    else{
+    else {
       check()
 
     }
@@ -43,8 +43,8 @@ export default function Cart() {
     $('.loading').fadeIn(1500)
     let { data } = await getData()
     setCount(data.numOfCartItems)
-     localStorage.setItem('cartNum',data.numOfCartItems)
-     setNum(data.numOfCartItems)
+    localStorage.setItem('cartNum', data.numOfCartItems)
+    setNum(data.numOfCartItems)
 
 
     setList(data.data)
@@ -82,11 +82,8 @@ export default function Cart() {
     let { data } = await updataProduct(id, count)
     setList(data.data)
   }
-  async function toRemove(id, count) {
-    if (document.getElementById("productNum").innerHTML == 1) {
-      DeleteProduct(id)
-    }
-
+  function toRemove(id, count2, count) {
+    count == 1 ? DeleteProduct(id) : toAdd(id, count2)
   }
 
 
@@ -94,7 +91,7 @@ export default function Cart() {
     <div className='loading position-fixed top-0 end-0 start-0 bottom-0 '>
       <i className='fa-solid fa-spinner fa-spin fa-5x text-main'></i>
     </div>
-    <div id='existcart' className='py-2 container mt-5'>
+    <div id='existcart' className='py-2 pb-5 container mt-5'>
       <h1 className=' my-3 text-center'>My <span className='text-main'>C</span>art</h1>
       {list?.products.map((e) => {
         return <div key={e._id} className="row m-0 bg-light py-2 border-bottom align-items-center ">
@@ -116,7 +113,7 @@ export default function Cart() {
           <div className="col-md-6 ms-auto text-end">
             <span onClick={() => toAdd(e.product._id, e.count + 1)} className='btn mx-3  text-white bg-main'> + </span>
             <span id='productNum'>{e.count}</span>
-            <span onClick={() => toRemove(e.product._id, e.count - 1)} className='btn mx-3  text-white bg-danger'>-</span>
+            <span onClick={() => toRemove(e.product._id, e.count - 1, e.count)} className='btn mx-3  text-white bg-danger'>-</span>
 
 
           </div>
@@ -146,9 +143,9 @@ export default function Cart() {
 
       </div>
     </div>
-    <div id='emptycart' className='mt-5 container text-center d-none'>
+    <div id='emptycart' className='mt-5 pb-5 container text-center d-none'>
       <img src={cart} className='m-auto  object' alt="empty cart" />
-      <p className='my-3 text-main' style={{fontSize:'30px'}}>Your Cart is Empty</p>
+      <p className='my-3 text-main' style={{ fontSize: '30px' }}>Your Cart is Empty</p>
     </div>
     <Footer></Footer>
   </>

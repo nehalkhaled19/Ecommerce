@@ -33,8 +33,6 @@ export default function ForgetPass() {
 
     // send data
     async function sendData(val) {
-        console.log('loly');
-
         let { data } = await axios.post(`${url}/api/v1/auth/forgotPasswords`, val).catch((err) => {
             setErrorMessage(err.response.data.message)
             console.log(err.response.data.message);

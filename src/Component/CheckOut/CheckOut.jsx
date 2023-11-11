@@ -49,21 +49,21 @@ export default function CheckOut() {
             <form onSubmit={forms.handleSubmit}>
                 <div className='my-3'>
                     <input placeholder='Enter your details' onBlur={forms.handleBlur} onChange={forms.handleChange} type="text" className='form-control' name="details" id="details" />
-                    {forms.touched.details ? <p class="mt-2 text-danger">{forms.errors.details}</p> : ""}
+                    {forms.touched.details ? <p className="mt-2 text-danger">{forms.errors.details}</p> : ""}
 
                 </div>
                 <div className='my-3'>
                     <input placeholder='Phone' onBlur={forms.handleBlur} onChange={forms.handleChange} type="tel" className='form-control' name="phone" id="phone" />
-                    {forms.touched.phone ? <p class="mt-2 text-danger">{forms.errors.phone}</p> : ""}
+                    {forms.touched.phone ? <p className="mt-2 text-danger">{forms.errors.phone}</p> : ""}
                 </div>
 
                 <div className='my-3'>
     
                     <input placeholder='City' onBlur={forms.handleBlur} onChange={forms.handleChange} type="text" className='form-control' name="city" id="city" />
-                    {forms.touched.city ? <p class="mt-2 text-danger">{forms.errors.city}</p> : ""}
+                    {forms.touched.city ? <p className="mt-2 text-danger">{forms.errors.city}</p> : ""}
                 </div>
                 <button  disabled={!(forms.isValid && forms.dirty)} type='submit' className='btn text-white bg-main mt-2 py-2 w-100 btn-sm d-flex align-items-center text-center justify-content-center'>
-                    <div><i class="fa-brands fa-cc-visa mx-1"></i></div>
+                    <div><i className="fa-brands fa-cc-visa mx-1"></i></div>
                     <span>Pay</span> </button>
 
             </form>

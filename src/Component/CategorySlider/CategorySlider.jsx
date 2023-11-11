@@ -20,11 +20,16 @@ export default function CategorySlider() {
         return axios.get('https://ecommerce.routemisr.com/api/v1/categories')
       }
     
-      let { data } = useQuery('category', () => categoryData())
+      let { data, isLoading } = useQuery('category',categoryData,{
+        refetchOnMount: false,
+        staleTime:80000
+      })
    
        
     return <div >
-        <OwlCarousel className=' owl-carousel owl-reponsive-breakpoint owl-theme my-5 ' autoplay={true}
+          {isLoading ? <div className='loading position-fixed top-0 end-0 start-0 bottom-0  '>
+                <i className='fa-solid fa-spinner fa-spin fa-5x text-main'></i>
+            </div> :<OwlCarousel className=' owl-carousel owl-reponsive-breakpoint owl-theme my-5 ' autoplay={true}
         autoplayTimeout={2500} responsive={{ 0: { items: 1 } , 480: { items: 2 }, 767: { items: 3 } , 990: { items: 5 }, 1200: { items: 6 }}}  loop dots={true} >
             {data?.data.data.map((e) => {
                 return <div className='category item mx-2 img-category' key={e.name} id='catergorySlider'>
@@ -33,5 +38,6 @@ export default function CategorySlider() {
                 </div>
             })}
         </OwlCarousel>
+}
     </div >
 }

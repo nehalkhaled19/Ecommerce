@@ -12,32 +12,30 @@ import { useQuery } from 'react-query'
 
 export default function FeaturedProduct() {
     let { addToCart, addToWishList, getWishListData, deletePro, setNum } = useContext(CartContext)
-    let [allProduct, setProduct] = useState([])
-    let [someProduct, setSomeProduct] = useState([])
     let [y, setY] = useState([])
-    let search = []
     let x = []
     // class of wishlist
     localStorage.ClassName = "text-danger";
 
-    const [idPage, setId] = useState(1)
 
     // to show products
+    const [idPage, setId] = useState(1)
     function getProductes(pagenum) {
         $(window).scrollTop(0);
         return axios.get(`https://ecommerce.routemisr.com/api/v1/products?page=${pagenum.idPage}`)
     }
-
     let { isLoading, data } = useQuery({
         queryKey: ['Products', idPage],
         queryFn: () => getProductes({ idPage }),
-        onSuccess: (data) => {
+        refetchOnMount: false,
+        // staleTime:60000,
+        onSuccess: () => {
             AOS.init()
-            setProduct(data?.data.data)
-            setSomeProduct(data?.data.data)
+
         },
 
     })
+
 
     useEffect(() => {
         getWishData()
@@ -88,25 +86,7 @@ export default function FeaturedProduct() {
         }
     }
 
-    // searching
-    function searching() {
-        setProduct(search)
-        let value = $('#productName').val().toLowerCase()
-        if (value != '') {
-            someProduct.forEach(element => {
-                let result = element.title.toLowerCase().includes(value)
-                if (result == true) {
-                    search.push(element)
-                }
-                setProduct(search)
-            })
-
-        }
-        else{
-                    setProduct(someProduct)
-
-        }
-    }
+  
 
 
     return (
@@ -114,13 +94,13 @@ export default function FeaturedProduct() {
             <Toaster />
             {isLoading ? <div className='loading position-fixed top-0 end-0 start-0 bottom-0  '>
                 <i className='fa-solid fa-spinner fa-spin fa-5x text-main'></i>
-            </div> : <div className='mt-5 py-4'>
-                <input type="text" onKeyUp={searching} id='productName' placeholder='search....' className='form-control w-75 m-auto ' />
+            </div> : <div className='mt-5 py-2'>
+            
                 <div>
                     <div>
                         <div id='ProductSection' className="row my-3 gy-3">
 
-                            {allProduct.map((e) => <div key={e._id} className="col-xl-2 col-lg-3 col-md-4 col-sm-6 ">
+                            { data?.data.data.map((e) => <div key={e._id} className="col-xl-2 col-lg-3 col-md-4 col-sm-6 ">
                                 <div className="product p-2 cursor-pointer overflow-hidden ">
                                     <Link to={'../productDetails/' + e._id}>
 
@@ -145,31 +125,35 @@ export default function FeaturedProduct() {
                                     </div>
                                 </div>
                             </div>
-                            )}
+                            )
+                           
+                        }
 
                         </div>
                     </div>
                 </div>
-                <nav aria-label="Page navigation example">
-                    <ul className="pagination justify-content-center my-5">
-                        <li className="page-item" >
-                            <a className="page-link text-main pages cursor-pointer" onClick={() => { setId(1) }} aria-label="Previous">
-                                <span aria-hidden="true" onClick={() => { setId(1) }} className="pages" >&laquo;</span>
-                            </a>
-                        </li>
-                        <li className="page-item"><a onClick={() => { setId(1) }} className="page-link text-main pages cursor-pointer">1</a></li>
-                        <li className="page-item"><a onClick={() => { setId(2) }} className="page-link text-main pages cursor-pointer"  >2</a></li>
-                        <li className="page-item">
-                            <a onClick={() => { setId(2) }} className="page-link text-main pages cursor-pointer"
-                                aria-label="Next">
-                                <span onClick={() => { setId(2) }} aria-hidden="true" className='pages'
-                                >&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
             </div>
             }
+            <nav aria-label="Page navigation example">
+                <ul className="pagination justify-content-center my-5">
+                    <li className="page-item" >
+                        <a className="page-link text-main pages cursor-pointer" onClick={() => { setId(1) }} aria-label="Previous">
+                            <span aria-hidden="true" onClick={() => { setId(1) }} className="pages" >&laquo;</span>
+                        </a>
+                    </li>
+                    <li className="page-item"><a onClick={() => { setId(1) }} className="page-link text-main pages cursor-pointer">1</a></li>
+                    <li className="page-item"><a onClick={() => { setId(2) }} className="page-link text-main pages cursor-pointer"  >2</a></li>
+                    <li className="page-item">
+                        <a onClick={() => { setId(2) }} className="page-link text-main pages cursor-pointer"
+                            aria-label="Next">
+                            <span onClick={() => { setId(2) }} aria-hidden="true" className='pages'
+                            >&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+
 
         </>
     )

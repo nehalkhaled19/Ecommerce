@@ -73,27 +73,27 @@ export default function Register() {
         <div className='my-4'>
        
           <input onBlur={forms.handleBlur} onChange={forms.handleChange} type="text" placeholder='name' className='form-control' name="name" id="name" />
-          {forms.touched.name ? <p class="text-danger">{forms.errors.name}</p> : ""}
+          {forms.touched.name ? <p className="text-danger">{forms.errors.name}</p> : ""}
         </div>
         <div className='my-4'>
        
           <input onBlur={forms.handleBlur} onChange={forms.handleChange} type="email" placeholder='email' className='form-control' name="email" id="email" />
-          {forms.touched.email ? <p class="text-danger">{forms.errors.email}</p> : ""}
+          {forms.touched.email ? <p className="text-danger">{forms.errors.email}</p> : ""}
         </div>
         <div className='my-4'>
          
           <input onBlur={forms.handleBlur} onChange={forms.handleChange} type="password" placeholder='password' className='form-control' name="password" id="password" />
-          {forms.touched.password ? <p class="text-danger">{forms.errors.password}</p> : ""}
+          {forms.touched.password ? <p className="text-danger">{forms.errors.password}</p> : ""}
         </div>
         <div className='my-4'>
           
           <input onBlur={forms.handleBlur} onChange={forms.handleChange} type="password" placeholder='repassword' className='form-control' name="rePassword" id="rePassword" />
-          {forms.touched.rePassword ? <p class="text-danger">{forms.errors.rePassword}</p> : ""}
+          {forms.touched.rePassword ? <p className="text-danger">{forms.errors.rePassword}</p> : ""}
         </div>
         <div className='my-4'>
           
           <input onBlur={forms.handleBlur} onChange={forms.handleChange} type="tel" placeholder='phone' className='form-control' name="phone" id="phone" />
-          {forms.touched.phone ? <p class="text-danger">{forms.errors.phone}</p> : ""}
+          {forms.touched.phone ? <p className="text-danger">{forms.errors.phone}</p> : ""}
         </div>
         {loading ? <button type='button' className='btn my-4 rounded-4 m-auto text-white px-3 bg-main d-block'>
           <i className='fa-solid fa-spinner fa-spin'></i>

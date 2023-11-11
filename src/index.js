@@ -7,13 +7,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
 import { QueryClient, QueryClientProvider } from 'react-query';
-
+import {ReactQueryDevtools} from 'react-query/devtools'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 let x = new QueryClient()
 root.render(
-<QueryClientProvider client={x} >
+<QueryClientProvider client={x}>
 <App />
+<ReactQueryDevtools  InitialIsOpen='false' position='top'></ReactQueryDevtools>
 </QueryClientProvider>
 
 );

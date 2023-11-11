@@ -49,14 +49,14 @@ export default function ResetPass() {
       <form onSubmit={resetPass.handleSubmit} >
         <div className='my-3'>
           <input type="email" onBlur={resetPass.handleBlur} onChange={resetPass.handleChange} placeholder='enter your email' className='form-control my-1' name="email" id="email" />
-          {resetPass.touched.email ? <p class="mt-2 text-danger">{resetPass.errors.email}</p> : ""}
+          {resetPass.touched.email ? <p className="mt-2 text-danger">{resetPass.errors.email}</p> : ""}
 
 
         </div>
         <div className='my-3'>
 
           <input type="password" onBlur={resetPass.handleBlur} placeholder='new password' onChange={resetPass.handleChange} className='form-control my-1' name="newPassword" id="newPassword" />
-          {resetPass.touched.newPassword ? <p class="mt-2 text-danger">{resetPass.errors.newPassword}</p> : ""}
+          {resetPass.touched.newPassword ? <p className="mt-2 text-danger">{resetPass.errors.newPassword}</p> : ""}
         </div>
 
         <button disabled={!(resetPass.dirty && resetPass.isValid)} type='submit' className='btn my-4 rounded-4 m-auto text-white px-3 bg-main d-block'>Reset Password</button>

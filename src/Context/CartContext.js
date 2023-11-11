@@ -23,6 +23,7 @@ export default function CartContextProvider(props) {
             localStorage.setItem('cartNum', myReq.data.numOfCartItems)
             x = myReq.data.numOfCartItems
             setNum(myReq.data.numOfCartItems)
+         
         }
     }
     getAllData()

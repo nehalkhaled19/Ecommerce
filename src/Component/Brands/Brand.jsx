@@ -10,13 +10,16 @@ export default function Brand() {
     let [brandDetails, setBrand] = useState(null)
 
 
-  
+
     // all brands
     function brandsData() {
         return axios.get(`https://ecommerce.routemisr.com/api/v1/brands`)
     }
-    let { isLoading, data } = useQuery('brands',brandsData)
-   
+    let { isLoading, data, isFetching, isFetched } = useQuery('brands', brandsData, {
+        refetchOnMount: false,
+        staleTime:60000
+    })
+
     //specific brand
     async function brand(id) {
         let { data } = await axios.get(`https://ecommerce.routemisr.com/api/v1/brands/${id}`)
@@ -27,12 +30,12 @@ export default function Brand() {
     function close() {
         $('#exampleModal1').fadeOut(1000);
     }
-    
+
 
     return <>
-       {isLoading ? <div className='loading position-fixed top-0 end-0 start-0 bottom-0 '>
-      <i className='fa-solid fa-spinner fa-spin fa-5x text-main'></i>
-    </div> :<div className='container my-5'>
+        {isLoading ? <div className='loading position-fixed top-0 end-0 start-0 bottom-0 '>
+            <i className='fa-solid fa-spinner fa-spin fa-5x text-main'></i>
+        </div> : <div className='container my-5'>
             <h1 className='text-main text-center my-4' id='sub'>All Brands</h1>
             <div className="row gy-3">
                 {data?.data.data?.map((el) => {
@@ -46,7 +49,7 @@ export default function Brand() {
             </div>
 
         </div>
-}
+        }
         {brandDetails != null ? <div key={'model'} className="modal bg " id="exampleModal1" >
             <div className="modal-dialog modal-dialog-centered">
                 <div className="modal-content">
