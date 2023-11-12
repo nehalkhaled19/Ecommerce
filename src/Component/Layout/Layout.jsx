@@ -30,7 +30,7 @@ export default function Layout({ userData, logout }) {
       <Offline>
         <div className='network'>
 
-          <i className='fas fa-wifi'></i>
+          <i className='fas fa-wifi'></i>  
 
           Your are offline (surprise!)
         </div>

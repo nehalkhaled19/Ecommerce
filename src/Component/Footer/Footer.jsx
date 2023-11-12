@@ -34,7 +34,7 @@ export default function Footer() {
                             <i className='fa-brands fa-sm fa-facebook-f '></i>
                         </div>
                         <div className='icon-holder icon-google mx-1 d-flex justify-content-center align-items-center '>
-                            <i className='fa-brands fa-sm fa-google '></i>
+                            <i className='fa-brands fa-sm fa-youtube '></i>
                         </div>  <div className='icon-holder icon-tumblr mx-1 d-flex justify-content-center align-items-center '>
                             <i className='fa-brands fa-sm fa-tumblr '></i>
                         </div>  <div className='icon-holder icon-twitter mx-1 d-flex justify-content-center align-items-center '>

@@ -26,6 +26,7 @@ import AllOrders from './Component/AllOrders/AllOrders';
 
 function App() {
   let [userData, setData] = useState(null)
+  let [userId, setUserId] = useState(null)
   
 
   // check users
@@ -34,6 +35,7 @@ function App() {
       let token = localStorage.getItem("userToken")
       let data = jwtDecode(token)
       saveData(data)
+      setUserId(data.id)
     }
   }, [])
 
@@ -92,14 +94,10 @@ function App() {
       { path: 'Ecommerce', element: <SaveUser><Register /></SaveUser> },
       { path: 'login', element: <Login saveData={saveData} /> },
       { path: 'signout', element: <Signout /> },
-      {path: 'allorders', element: <ProtectedRouter>< AllOrders userData={userData} /></ProtectedRouter> }
+      {path: 'allorders', element: <ProtectedRouter>< AllOrders userId={userId} /></ProtectedRouter> }
     ]
     },
-    // {
-    //   path: '/', element: <Layout logout={logout} userData={userData} />, children: [
-        
-    //   ]
-    //   },
+   
 
   ])
 return (

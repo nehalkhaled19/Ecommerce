@@ -46,6 +46,7 @@ export default function Login({ saveData }) {
       setLoading(false)
     })
     localStorage.setItem("userToken", data.token)
+    console.log(data);
     saveData(data.user)
     nav('../home')
     setLoading(false)

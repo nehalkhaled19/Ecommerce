@@ -8,37 +8,56 @@ import cart from '../../imgs/cart1.png'
 
 
 
-export default function AllOrders({ userData }) {
-  let idForUser = userData?.id
+export default function AllOrders({ userId }) {
+  let idForUser = userId
+  console.log(idForUser);
+
+
+
+
+
+
+//   // all brands
+//   function brandsData(x) {
+//     console.log(x);
+//     return axios.get(`https://ecommerce.routemisr.com/api/v1/orders/user/${x}`)
+//   }
+//   let { isLoading, data, isFetching, isFetched } = useQuery('brands', () => brandsData(idForUser), {
+//     refetchOnMount: false,
+//     staleTime: 60000
+//   })
+// // console.log(userData);
+//   console.log(data);
+
+//   // brandsData(idForUser)
+
   let [orders, setOrders] = useState([])
-  console.log(userData);
+  
   useEffect(() => {
     $('.loading').fadeIn(1000)
     getAllOrders(idForUser)
   }, [])
   // get data
   async function getAllOrders(id) {
-    console.log(id);
     let { data } = await axios.get(`https://ecommerce.routemisr.com/api/v1/orders/user/${id}`)
     setOrders(data)
-    console.log(orders);
-    if (orders == []) {
+    console.log(data);
+    if (data.length == 0){
       $('#haveOrders').addClass('d-none')
       $('#noOrders').removeClass('d-none')
-
     }
-    if (orders != []) {
-      $('#haveOrders').removeClass('d-none')
-      $('#noOrders').addClass('d-none')
+    if (data.length != 0){
+    $('#haveOrders').removeClass('d-none')
+    $('#noOrders').addClass('d-none')
     }
+  $('.loading').fadeOut(500)
 
-    $('.loading').fadeOut(500)
-
-  }
+}
 
 
-  return <>
-    <div className='loading position-fixed top-0 end-0 start-0 bottom-0 '>
+return <> 
+
+  <div className='loading position-fixed top-0 end-0 start-0 bottom-0 '>
       <i className='fa-solid fa-spinner fa-spin fa-5x text-main'></i>
     </div>
     <div className='container mt-5 py-2'>
@@ -99,8 +118,11 @@ export default function AllOrders({ userData }) {
 
 
 
-    <Footer></Footer>
 
 
-  </>
+
+  <Footer></Footer>
+
+
+</>
 }
