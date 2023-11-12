@@ -41,7 +41,7 @@ export default function AllOrders({ userId }) {
   async function getAllOrders(id) {
     let { data } = await axios.get(`https://ecommerce.routemisr.com/api/v1/orders/user/${id}`)
     setOrders(data)
-    console.log(data);
+   
     if (data.length == 0){
       $('#haveOrders').addClass('d-none')
       $('#noOrders').removeClass('d-none')
