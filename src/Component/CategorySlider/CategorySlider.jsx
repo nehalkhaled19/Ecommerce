@@ -5,6 +5,7 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import 'owl.carousel/dist/owl.carousel.js'
 import { useQuery } from 'react-query';
 import axios from 'axios';
+
 // import { useDispatch, useSelector } from 'react-redux';
 // import { categoryData } from '../../Redux/CategorySlice';
 

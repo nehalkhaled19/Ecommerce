@@ -7,7 +7,7 @@ import $ from 'jquery'
 import toast, { Toaster } from 'react-hot-toast';
 import img from '../../imgs/cart1.png'
 import Footer from '../Footer/Footer'
-
+import { Helmet } from 'react-helmet'
 
 export default function WishList() {
     let { getWishListData, addToCart, deletePro, setNum} = useContext(CartContext)
@@ -48,6 +48,10 @@ export default function WishList() {
     }, [])
     return <>
         <Toaster />
+        <Helmet>
+            <title>Wish List</title>
+            <meta name="description" content="Wish List" />
+        </Helmet>
         <div className='loading position-fixed top-0 end-0 start-0 bottom-0 '>
             <i className='fa-solid fa-spinner fa-spin fa-5x text-main'></i>
         </div>

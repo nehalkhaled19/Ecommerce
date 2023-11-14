@@ -4,7 +4,7 @@ import * as Yup from 'yup'
 import axios from 'axios'
 import { Link, useNavigate } from "react-router-dom"
 import img1 from "../../imgs/5062532-fotor-2023110523261.jpg"
-
+import { Helmet } from 'react-helmet'
 
 export default function ForgetPass() {
 
@@ -66,6 +66,10 @@ export default function ForgetPass() {
 
 
     return <div className='container mt-5'>
+         <Helmet>
+            <title>Forget Password</title>
+            <meta name="description" content="Forget Password" />
+        </Helmet>
         <div  id='registerForm' className='d-flex shadow-lg px-4 rounded-5'>
     <div className='col-md-7 d-flex align-items-center'>
       <img src={img1} className='w-100' alt="logo2" />

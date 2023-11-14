@@ -4,7 +4,7 @@ import * as Yup from 'yup'
 import axios from 'axios'
 import { useNavigate } from "react-router-dom"
 import img1 from "../../imgs/5062532-fotor-2023110523261.jpg"
-
+import { Helmet } from 'react-helmet'
 
 export default function Register() {
 
@@ -24,7 +24,7 @@ export default function Register() {
   }
   //  validation
   let validationSchema = Yup.object({
-    name: Yup.string().required('name is required').min(3, 'min length 3').max(12, 'max length 12'),
+    name: Yup.string().required('name is required').matches(/^[a-zA-Z]{3,15}[ ]?[a-zA-Z]*$/, "Enter valid name"),
     email: Yup.string().required('email is required').email('enter valid email'),
     password: Yup.string().required('password is required').matches(/^[a-z0-9]{6,16}$/, "enter Valid Passowrd"),
     rePassword: Yup.string().required('repassword is required').oneOf([Yup.ref('password')], 'enter matched Password'),
@@ -59,7 +59,12 @@ export default function Register() {
 
 
   return (
+    
     <div className='container mt-5'>
+      <Helmet>
+            <title>Shopify Register</title>
+            <meta name="description" content="Shopify Register" />
+        </Helmet>
       <div  id='registerForm' className='d-flex shadow-lg px-4 rounded-5'>
     <div className='col-md-7 d-flex align-items-center'>
       <img src={img1} className='w-100' alt="logo2" />

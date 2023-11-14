@@ -9,7 +9,6 @@ import 'aos/dist/aos.css';
 import { useQuery } from 'react-query'
 
 
-
 export default function FeaturedProduct() {
     let { addToCart, addToWishList, getWishListData, deletePro, setNum } = useContext(CartContext)
     let [y, setY] = useState([])
@@ -90,7 +89,9 @@ export default function FeaturedProduct() {
 
 
     return (
+        
         <>
+      
             <Toaster />
             {isLoading ? <div className='loading position-fixed top-0 end-0 start-0 bottom-0  '>
                 <i className='fa-solid fa-spinner fa-spin fa-5x text-main'></i>

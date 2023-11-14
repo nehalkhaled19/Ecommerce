@@ -27,6 +27,9 @@ export default function CartContextProvider(props) {
         }
     }
     getAllData()
+    // useEffect(()=>{
+    //     getData()
+    // },[])
 
 
 
@@ -51,8 +54,10 @@ export default function CartContextProvider(props) {
     function getData() {
         return axios.get('https://ecommerce.routemisr.com/api/v1/cart', {
             headers: head
-        }
-        )
+        })
+        // .then((response)=>{
+        //     console.log(response);
+        // })
     }
     // get wishlist data
     function getWishListData() {

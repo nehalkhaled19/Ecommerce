@@ -1,36 +1,16 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useQuery } from 'react-query';
+
 import Footer from '../Footer/Footer';
 import $ from 'jquery'
 import cart from '../../imgs/cart1.png'
-
+import { Helmet } from 'react-helmet'
 
 
 
 export default function AllOrders({ userId }) {
   let idForUser = userId
-  console.log(idForUser);
-
-
-
-
-
-
-//   // all brands
-//   function brandsData(x) {
-//     console.log(x);
-//     return axios.get(`https://ecommerce.routemisr.com/api/v1/orders/user/${x}`)
-//   }
-//   let { isLoading, data, isFetching, isFetched } = useQuery('brands', () => brandsData(idForUser), {
-//     refetchOnMount: false,
-//     staleTime: 60000
-//   })
-// // console.log(userData);
-//   console.log(data);
-
-//   // brandsData(idForUser)
-
+ 
   let [orders, setOrders] = useState([])
   
   useEffect(() => {
@@ -56,7 +36,10 @@ export default function AllOrders({ userId }) {
 
 
 return <> 
-
+  <Helmet>
+            <title>All orders</title>
+            <meta name="description" content="user's orders " />
+        </Helmet>
   <div className='loading position-fixed top-0 end-0 start-0 bottom-0 '>
       <i className='fa-solid fa-spinner fa-spin fa-5x text-main'></i>
     </div>

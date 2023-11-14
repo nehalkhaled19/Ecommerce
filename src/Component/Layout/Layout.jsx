@@ -4,7 +4,6 @@ import { Outlet, useLocation } from 'react-router-dom'
 import $ from 'jquery'
 import { Offline } from "react-detect-offline";
 
-
 export default function Layout({ userData, logout }) {
 
   // at changing path

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import $ from 'jquery'
 import Footer from '../Footer/Footer'
 import { useQuery } from 'react-query'
-
+import { Helmet } from 'react-helmet'
 
 export default function Brand() {
 
@@ -33,6 +33,10 @@ export default function Brand() {
 
 
     return <>
+      <Helmet>
+            <title>Brands</title>
+            <meta name="description" content="Shopify brands" />
+        </Helmet>
         {isLoading ? <div className='loading position-fixed top-0 end-0 start-0 bottom-0 '>
             <i className='fa-solid fa-spinner fa-spin fa-5x text-main'></i>
         </div> : <div className='container my-5'>

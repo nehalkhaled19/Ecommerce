@@ -7,7 +7,7 @@ import $ from 'jquery'
 import { Link } from 'react-router-dom'
 import cart from '../../imgs/cart1.png'
 import Footer from '../Footer/Footer'
-
+import { Helmet } from 'react-helmet'
 
 
 export default function Cart() {
@@ -88,6 +88,10 @@ export default function Cart() {
 
 
   return <>
+    <Helmet>
+            <title>Cart</title>
+            <meta name="description" content="user's cart" />
+        </Helmet>
     <div className='loading position-fixed top-0 end-0 start-0 bottom-0 '>
       <i className='fa-solid fa-spinner fa-spin fa-5x text-main'></i>
     </div>

@@ -8,9 +8,9 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { CartContext } from '../../Context/CartContext'
 import toast, { Toaster } from 'react-hot-toast';
 import { useContext } from 'react';
-
+import { Helmet } from 'react-helmet'
 export default function ProductDetails() {
-    let { addToCart, addToWishList, deletePro, getWishListData,setNum } = useContext(CartContext)
+    let { addToCart, addToWishList, deletePro, getWishListData, setNum } = useContext(CartContext)
     let [product, setProduct] = useState(null)
     let { id } = useParams()
     let x = []
@@ -82,8 +82,12 @@ export default function ProductDetails() {
             <i className='fa-solid fa-spinner fa-spin fa-5x text-main'></i>
         </div>
         <div className="container">
-            {product != null ? <div  className="row align-items-center my-5  mt-5">
+            {product != null ? <div className="row align-items-center my-5  mt-5">
                 <div className="col-md-3 my-3">
+                    <Helmet>
+                        <title>{product.title}</title>
+                        <meta name="description" content={product.description} />
+                    </Helmet>
                     <OwlCarousel className='owl-theme' items={1} loop  >
                         {product.images.map((e) => {
                             return <div key={product.title} className='item'>

@@ -5,7 +5,7 @@ import axios from 'axios';
 import $ from 'jquery'
 import Footer from '../Footer/Footer';
 
-
+import { Helmet } from 'react-helmet'
 export default function Category() {
 
   let [subCategiry, setSubCategiry] = useState(null)
@@ -34,6 +34,10 @@ export default function Category() {
   }
 
   return <>
+    <Helmet>
+            <title>Category</title>
+            <meta name="description" content="Nested component" />
+        </Helmet>
     <div className='loading position-fixed top-0 end-0 start-0 bottom-0 '>
       <i className='fa-solid fa-spinner fa-spin fa-5x text-main'></i>
     </div>

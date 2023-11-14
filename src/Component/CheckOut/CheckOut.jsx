@@ -4,7 +4,7 @@ import * as Yup from 'yup'
 import { CartContext } from '../../Context/CartContext'
 import { useParams } from 'react-router-dom'
 import img1 from "../../imgs/5062532-fotor-2023110523261.jpg"
-
+import { Helmet } from 'react-helmet'
 export default function CheckOut() {
 
     let { CheckOut } = useContext(CartContext)
@@ -37,6 +37,10 @@ export default function CheckOut() {
 
 
     return <>
+     <Helmet>
+            <title>Check out</title>
+            <meta name="description" content="check out" />
+        </Helmet>
          <div className='container mt-5' >
     <div  id='registerForm' className='d-flex shadow-lg px-4 rounded-5'>
   <div className='col-md-7 d-flex align-items-center'>
