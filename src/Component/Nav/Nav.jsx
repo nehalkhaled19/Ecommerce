@@ -29,10 +29,11 @@ export default function Nav({ userData, logout }) {
                   <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'home'}>Home</NavLink>
                   <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'product'}>Products</NavLink>
                   <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'cart'}>Cart</NavLink>
-                  <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'/allorders' }>All orders</NavLink>
                   <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'brands'}>Brands</NavLink>
                   <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'category'}>Categories</NavLink>
                   <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'wishList'}>Wish List</NavLink>
+                  <NavLink className={({ isActive }) => isActive ? "nav-link text-main" : 'nav-link '} to={'/allorders' }>All orders</NavLink>
+
                 </ul> : ""}
             </div>
 

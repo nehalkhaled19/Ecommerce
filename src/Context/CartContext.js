@@ -1,7 +1,5 @@
 import axios from "axios";
-import { createContext, useEffect, useState } from "react";
-
-
+import { createContext,  useState , useEffect} from "react";
 export let CartContext = createContext()
 
 export default function CartContextProvider(props) {
@@ -14,7 +12,7 @@ export default function CartContextProvider(props) {
     let x;
     async function getAllData() {
         let myReq = await getData().catch((err) => {
-            console.log(err);
+            console.log('Sorry you arenot user');
             localStorage.setItem('cartNum', 0)
             x = 0
             setNum(localStorage.getItem('cartNum'))
@@ -25,12 +23,17 @@ export default function CartContextProvider(props) {
             setNum(myReq.data.numOfCartItems)
          
         }
+        clearConsole()
     }
-    getAllData()
-    // useEffect(()=>{
-    //     getData()
-    // },[])
-
+   
+    function clearConsole() { 
+        if(window.console || window.console.firebug) {
+           console.clear();
+        }
+    }
+ 
+        getAllData()
+   
 
 
 
