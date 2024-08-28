@@ -27,64 +27,57 @@ Excited to share with you my first e-commerce project built using REST APIs and 
 
 ### Installation
 
-# 1. Clone the repository:
-git clone https://github.com/yourusername/ecommerce-project.git
-cd ecommerce-project
+## 1. Clone the repository:
+- git clone https://github.com/nehalkhaled19/ecommerce-project.git
+- cd ecommerce-project
 
-# 2. Install dependencies:
-npm install
-# or
-yarn install
+## 2. Install dependencies:
+- npm install
+## or
+- yarn install
 
-# 3. Set up environment variables:
-# Create a .env file in the root directory and add the following:
-REACT_APP_API_URL=<Your API URL>
-REACT_APP_STRIPE_PUBLIC_KEY=<Your Stripe Public Key>
+## 3. Set up environment variables:
+## Create a .env file in the root directory and add the following:
+- REACT_APP_API_URL=<Your API URL>
+- REACT_APP_STRIPE_PUBLIC_KEY=<Your Stripe Public Key>
 
-# 4. Start the development server:
-npm start
-# or
-yarn start
+## 4. Start the development server:
+- npm start
+## or
+- yarn start
 
 ### Usage
 
-# Authentication: Register or log in to create an account.
-# Product Catalog: Browse through the product categories and view details.
-# Wishlist: Add your favorite items to a wishlist.
-# Cart: Add items to your cart, update quantities, or remove them as needed.
-# Checkout: Complete the purchase using Stripe's secure payment gateway.
+-  Authentication: Register or log in to create an account.
+-  Product Catalog: Browse through the product categories and view details.
+-  Wishlist: Add your favorite items to a wishlist.
+-  Cart: Add items to your cart, update quantities, or remove them as needed.
+-  Checkout: Complete the purchase using Stripe's secure payment gateway.
 
 ### Build
 
-# To build the app for production, run:
-npm run build
-# or
-yarn build
+## To build the app for production, run:
+- npm run build
+## or
+- yarn build
 
-# This will create an optimized production build in the build folder.
+## This will create an optimized production build in the build folder.
 
 ### 📚 Tech Stack
 
-# Frontend: React.js, Redux, Context API
-# Backend: REST APIs
-# UI/UX: Bootstrap, Font Awesome, Toast, AOS, Owl Carousel
-# Payment Integration: Stripe
-# Tools & Libraries: React Query, Axios, Formik, Yup, React Helmet, React Router
+-  Frontend: React.js, Redux, Context API
+-  Backend: REST APIs
+-  UI/UX: Bootstrap, Font Awesome, Toast, AOS, Owl Carousel
+-  Payment Integration: Stripe
+-  Tools & Libraries: React Query, Axios, Formik, Yup, React Helmet, React Router
 
 ### 💡 Future Enhancements
 
-# Adding a user profile page with order history and settings.
-# Implementing search functionality to find products easily.
-# Integrating social media login (Google, Facebook).
-# Enhancing the checkout process with additional payment options.
+-  Adding a user profile page with order history and settings.
+-  Implementing search functionality to find products easily.
+-  Integrating social media login (Google, Facebook).
+-  Enhancing the checkout process with additional payment options.
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/yourusername/ecommerce-project/issues) if you have any suggestions or find any bugs.
 
 ---
 
