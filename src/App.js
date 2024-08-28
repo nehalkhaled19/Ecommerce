@@ -58,7 +58,6 @@ function App() {
   // to protect router
   function ProtectedRouter(x) {
     if (localStorage.getItem("userToken")) {
-  
       return x.children
     
     }

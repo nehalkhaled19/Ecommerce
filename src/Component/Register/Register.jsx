@@ -42,7 +42,6 @@ export default function Register() {
     },
     onSubmit: sendData,
     validationSchema,
-
   })
 
   // send data
